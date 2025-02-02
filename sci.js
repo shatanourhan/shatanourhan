@@ -11,19 +11,18 @@ const titles = ["Rocket Scientist", "Astrophysicists"];
         }
 
         function startTypingEffect() {
-            titleElement.textContent = ''; // Clear content before typing
+            titleElement.textContent = ''; 
             typeWriter(titles[0], 0, () => {
                 setTimeout(() => {
-                    titleElement.textContent = ''; // Clear for the second text
-                    typeWriter(titles[1], 0, startTypingEffect); // Callback to restart
-                }, 500); // Delay before the second text starts
+                    titleElement.textContent = ''; 
+                    typeWriter(titles[1], 0, startTypingEffect);
+                }, 500); 
             });
         }
 
-        // Start the typing effect
         startTypingEffect();
 
-// Function to handle rotating image on scroll
+
 function rotateImageOnScroll() {
     const scrollTop = window.scrollY;
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -33,14 +32,14 @@ function rotateImageOnScroll() {
     image.style.transform = `translateX(-50%) rotate(${rotationDegree}deg)`;
 }
 
-// Add the scroll event listener
+
 window.addEventListener('scroll', rotateImageOnScroll);
 
 document.addEventListener('mousemove', (event) => {
     const rocket = document.querySelector('.rocket');
-    const offsetX = 20; // Adjust as needed to center the rocket on the cursor
-    const offsetY = 20; // Adjust as needed to center the rocket on the cursor
+    const offsetX = 20; 
+    const offsetY = 20; 
 
-    // Update the position of the rocket based on the mouse position
+
     rocket.style.transform = `translate(${event.clientX - offsetX}px, ${event.clientY - offsetY}px)`;
 });

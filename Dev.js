@@ -5,7 +5,7 @@ window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
   
     const windowHeight = window.innerHeight;
-    const fullScroll = 2 * windowHeight; // Adjust according to distance between sections
+    const fullScroll = 2 * windowHeight; 
     
     if (scrollPosition < windowHeight) {
       main.style.transform = `translateX(${-scrollPosition}px)`;
@@ -25,14 +25,14 @@ window.addEventListener('scroll', function() {
 
   const imageContainer = document.querySelector('.image-container');
   const hoverText = document.querySelector('.hover-text');
-  const arrowImage = document.querySelector('.arrow'); // Select the arrow image
+  const arrowImage = document.querySelector('.arrow');
   
   imageContainer.addEventListener('mouseenter', () => {
       hoverText.style.display = 'block';
-      arrowImage.style.display = 'block'; // Show the arrow image on hover
+      arrowImage.style.display = 'block'; 
   });
   
   imageContainer.addEventListener('mouseleave', () => {
       hoverText.style.display = 'none';
-      arrowImage.style.display = 'none'; // Hide the arrow image when not hovering
+      arrowImage.style.display = 'none'; 
   });

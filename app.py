@@ -3,17 +3,17 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-# Configure Flask-Mail
-app.config['MAIL_SERVER'] = 'smtp.example.com'  # Replace with your SMTP server
-app.config['MAIL_PORT'] = 587  # Typically 587 for TLS
+
+app.config['MAIL_SERVER'] = 'smtp.example.com' 
+app.config['MAIL_PORT'] = 587  
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email@example.com'  # Your email
-app.config['MAIL_PASSWORD'] = 'your-email-password'  # Your email password
-app.config['MAIL_DEFAULT_SENDER'] = 'your-email@example.com'  # Your email
+app.config['MAIL_USERNAME'] = 'your-email@example.com'  
+app.config['MAIL_PASSWORD'] = 'your-email-password'  
+app.config['MAIL_DEFAULT_SENDER'] = 'your-email@example.com'  
 
 mail = Mail(app)
 
-# HTML form template
+
 form_html = '''
 <form id="contact-form" method="post">
     <div class="form-group">
@@ -36,12 +36,12 @@ def contact():
         email = request.form['Email']
         message = request.form['Message']
 
-        # Create email message
+        
         msg = Message(subject="New Message from Contact Form",
-                      recipients=["shatanurhan@mail.ru"],  # Email address to send to
+                      recipients=["shatanurhan@outlook.com"],  
                       body=f"Name: {name}\nEmail: {email}\nMessage:\n{message}")
 
-        # Send email
+        
         mail.send(msg)
 
         return "Message sent successfully."

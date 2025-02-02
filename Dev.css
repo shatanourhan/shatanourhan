@@ -141,12 +141,12 @@ main.content {
     height: 120%; 
     border-radius: 50%; 
     background: radial-gradient(ellipse at center, #D6B6F3, transparent 40%);
-    position: absolute; /* Position it absolutely within the container */
-    top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
-    z-index: 0; /* Place it below the image */
-    pointer-events: none; /* Ignore mouse events */
-    transition: all 0.3s ease; /* Smooth transition */
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    z-index: 0; 
+    pointer-events: none; 
+    transition: all 0.3s ease; 
 }  
 
 .image-container:hover {
@@ -154,7 +154,7 @@ main.content {
 }
 
 .image-container:hover::before {
-    transform: translate(-50%, -50%) scale(1.5); /* Scale up the gradient */
+    transform: translate(-50%, -50%) scale(1.5); 
     
 }
 
@@ -181,12 +181,12 @@ main.content {
 }
 
 .paragraphs {
-    margin: 0; /* Remove default margin */
+    margin: 0; 
     margin-top: 40px;
-    display: flex; /* Use flexbox for the paragraphs */
-    flex-direction: column; /* Stack paragraphs vertically */
+    display: flex; 
+    flex-direction: column; 
     gap: 0px;
-    align-items: flex-start; /* Align items to the left */
+    align-items: flex-start;
 }
 
 main.content #p1 { 
@@ -223,12 +223,12 @@ main.content #p4 {
     font-size: 1em;
     color: #E6E6FA;
     font-family: 'Preahvihear', sans-serif;
-    margin-bottom: 0px; /* No space after p4 */
+    margin-bottom: 0px; 
     margin-top: 0px;
 }
 
 .paragraphs2 {
-    text-align: left; /* Align text to the left */
+    text-align: left; 
     margin-top: 50px;
 }
 
@@ -374,17 +374,6 @@ i {
         background-color: #E6E6FA; 
     }
     
-    .submit-button {
-        width: auto; /* Change this to auto or a specific width */
-        padding: 10px; 
-        margin: 0 auto; /* This will work now */
-        display: block;    
-        border: none; 
-        border-radius: 5px; 
-        color: var(--text-color);
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
 
     .social-links {
         display: flex;                
@@ -434,10 +423,6 @@ i {
         cursor: pointer;
         transition: background-color 0.3s ease;
         font-weight: bold;
-      }
-      
-      .sec-2 .sign-up-form button:hover {
-        background: -webkit-linear-gradient(10deg,#5830a8,#BA68C8);
       }
       
       
@@ -570,7 +555,7 @@ i {
 @media (max-width: 768px) {
 
     main.content {
-        margin-top: 50px; /* Adjust margin for smaller screens */
+        margin-top: 50px; 
     }
 
     .paragraphs{
@@ -588,37 +573,37 @@ i {
     main.content #p2,
     main.content #p3,
     main.content #p5 {
-        font-size: 1.3em; /* Adjust font size */
+        font-size: 1.3em; 
     }
 
     main.content #p4,
     main.content #p1,
     main.content #p6 {
-        font-size: 0.7em; /* Adjust font size */
+        font-size: 0.7em; 
     }
 }
 
 @media (max-width: 480px) {
 
     main.content {
-        padding: 20px; /* Adjust main content padding */
+        padding: 20px; 
         margin-top: 70px;
     }
 
     main.content #p6 {
-        margin-left: 10px; /* Move it a bit to the left */
+        margin-left: 10px; 
     }
 
     main.content #p2,
     main.content #p3,
     main.content #p5 {
-        font-size: 1.5em; /* Adjust font size */
+        font-size: 1.5em; 
     }
 
     main.content #p4,
     main.content #p1,
     main.content #p6 {
-        font-size: 0.7em; /* Adjust font size */
+        font-size: 0.7em; 
     }
     main.content #p7{
         font-size: 1em;
