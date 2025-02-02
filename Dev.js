@@ -22,6 +22,17 @@ window.addEventListener('scroll', function() {
     }
   });
 
+/* header */
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.classList.add('flipped');
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.classList.remove('flipped');
+    });
+});
+
 
   const imageContainer = document.querySelector('.image-container');
   const hoverText = document.querySelector('.hover-text');
@@ -36,3 +47,94 @@ window.addEventListener('scroll', function() {
       hoverText.style.display = 'none';
       arrowImage.style.display = 'none'; 
   });
+
+
+
+
+
+
+const gradient = document.createElement('div');
+gradient.classList.add('gradient');
+imageContainer.appendChild(gradient);
+
+
+function animateGradient() {
+    let scale = 1;
+    let opacity = 0.5;
+    let direction = 1;
+
+    setInterval(() => {
+        
+        scale += 0.01 * direction;
+        opacity += 0.05 * direction;
+
+        
+        if (scale >= 1.1 || scale <= 1) {
+            direction *= -1; 
+        }
+
+        
+        gradient.style.transform = `scale(${scale})`;
+        gradient.style.opacity = opacity;
+    }, 100); 
+}
+
+
+animateGradient();
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const content = document.getElementById('home');
+        
+        setTimeout(() => {
+            content.classList.add('visible');
+        }, 300); 
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+      
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                 
+                  services.classList.add('visible');
+              } else {
+                  
+                  services.classList.remove('visible');
+              }
+          });
+      });
+
+      
+      observer.observe(services);
+  });
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    function checkVisibility() {
+        const rect = services.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+
+        
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+          services.classList.add('visible');
+        } else {
+          services.classList.remove('visible');
+        }
+    }
+
+    
+    checkVisibility();
+
+    
+    window.addEventListener('scroll', checkVisibility);
+});
+
+
+
+

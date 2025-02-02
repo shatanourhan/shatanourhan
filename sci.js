@@ -1,3 +1,5 @@
+
+
 const titles = ["Rocket Scientist", "Astrophysicists"];
         const titleElement = document.getElementById('title');
         
@@ -43,3 +45,50 @@ document.addEventListener('mousemove', (event) => {
 
     rocket.style.transform = `translate(${event.clientX - offsetX}px, ${event.clientY - offsetY}px)`;
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    window.scrollTo(0, 0);
+    const content = document.getElementById('home');
+  
+    setTimeout(() => {
+        content.classList.add('visible');
+    }, 500); 
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    window.scrollTo(0, 0);
+
+    const options = {
+        root: null, 
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    const articles = document.getElementById('articles');
+    const about = document.getElementById('about');
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                
+                entry.target.classList.add('visible');
+            } else {
+                
+                entry.target.classList.remove('visible');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, options);
+
+   
+    observer.observe(articles);
+    observer.observe(about);
+});
+
+
+console.log("Scroll Position:", window.scrollY);
+

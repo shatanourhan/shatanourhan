@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="sci.css">
     <link rel="icon" href="./images/scientist.png" type="image/png">
-    <title>Nour the Scientist</title>
+    <title>Nourhan the Scientist</title>
 </head>
 <body>
     <header>
@@ -14,11 +14,12 @@
                 <li><a href="index.html"><img src="./images/programmer.png" alt="Icon" class="nav-icon"></a></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="Articles.html">Articles</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="content" id="home">
+    <main class="content fade-in" id="home">
         <img src="./images/Space.png" alt="Space" class="rotating-image">
         <div class="image-container">
             <img src="./images/a-white-girl-with-hijab-and-round-glasses.png" alt="Sample Image" class="hover-image">
@@ -27,22 +28,47 @@
         <h2 id="title">Rocket Scientist</h2>
         <p>in the making</p>
         <div class="button-container">
-                <button class="round-button">
-                    <img src="./images/Subtract.png" alt="Sample Image" class="button-image">My Resume
-                </button>          
+            <button class="round-button" onclick="window.location.href='mailto:shatanourhan@outlook.com?subject=Lebenslauf Anfrage&body=Können Sie mir bitte Ihren Lebenslauf schicken?'">
+                <img src="./images/Subtract.png" alt="Sample Image" class="button-image">My Resume
+            </button>        
         </div>
     </main>
-    <section id="about">
+    <section id="about" class="fade-in">
         <h6>WHO I AM?</h6>
         <div class="container">
-        <p class="left">An aspiring Spacecraft Engineer. My unwavering devotion to astrophysics is driven by an insatiable curiosity for the universe, particularly in sun exploration—a field where I envision making significant contributions.</p>
-        <p class="right">As a working engineering student, I've developed a strong foundation in mechanical design, becoming proficient in tools like CATIA and other CAD programs. My technical repertoire also includes experience with FEA and CFD programs, utilizing software such as MATLAB, with skills honed through various courses and trainings detailed in my CV</p>
-        <p class="left">Beyond my foundational interests, I’m equally fascinated by technology evolution, artificial intelligence, and, more recently, business management. These interests continuously influence my growth and outlook as I navigate my journey into the aerospace world.</p>
-        <p class="right">While my academic pursuits keep me busy, I find joy and inspiration in various hobbies. Drawing, hiking, and stargazing allow me to unwind and connect with my creative and adventurous sides. I love immersing myself in books and I am also a tinker at heart electronics is my thing. In my downtime, I’m an avid football, basketball, and MMA fan, and, as they say, a good chess player.</p>
-        <p class="left">This is just a glimpse into my world as I delve deeper into the mysteries of the cosmos. Feel free to explore my CV for more detailed information on my academic and professional experiences.</p>
+        <p>An aspiring spacecraft engineer focused on propulsion systems and thermal control, with unwavering devotion to astrophysics,  particularly in the exploration of stellar phenomena.</p>
+        <p>Through my studies and personal curiosity, I explore how engineering and astrophysics intersect. This website is a space for me to share my research, articles, and insights on these topics as I continue to deepen my understanding of the universe.</p>
+        <p >I'm also interested in how emerging technologies and artificial intelligence are shaping the future of aerospace, which influences both my academic work and broader career perspective.</p>
+        <!--<p >While my academic pursuits keep me busy, I find joy and inspiration in various hobbies. Drawing, hiking, and stargazing allow me to unwind and connect with my creative and adventurous sides. I love immersing myself in books and I am also a tinker at heart electronics is my thing. In my downtime, I’m an avid football, basketball, and MMA fan, and, as they say, a good chess player.</p>
+        --><p>Feel free to reach out with any feedback on my writing. For more details on my academic and technical background, please refer to my Resume.</p>
     </div>
     <div class="rocket"></div>
     </section>
+
+    <section id="articles" class="articles fade-in"> 
+        <h1>Most Recent Articles</h1>
+        
+    <div class="containerblog">
+        <div class="card">
+            <img src="./images/PSP-inFrontOfSun.jpg" alt="Article 1">
+            <h2>Unraveling the Solar Mystery</h2>
+            <p>Discovering the Parker Solar Probe mission, a groundbreaking endeavor to study the Sun up close. It discusses the scientific discoveries made in the realm of solar wind harnessing.</p>
+            <a href="article1.html" class="read-more">Read</a>
+        </div>
+        <div class="bigcard">
+            <img src="./images/supernova.webp" alt="Article 2">
+            <h2>The Silent Collapse</h2>
+            <p>Exploring  the fascinating journey of stars, from their formation in stellar nurseries to their eventual demise as white dwarfs, neutron stars, or black holes.It delves into the processes of stellar evolution, including nuclear fusion,and supernova explosions.</p>
+            <a href="article6.html" class="read-moreb">Read</a>
+        </div>
+        <div class="card">
+            <img src="./images/soho.jpg" alt="Article 3">
+            <h2>The Sun's Fiery Crown</h2>
+            <p>Discovering the secrets of the Sun's outer layer, the corona. its extreme temperatures, magnetic activity, and its impact on Earth. It delves into the mechanisms behind (CMEs) </p>
+            <a href="article3.html" class="read-more">Read</a>
+        </div>
+    </div>
+</section>
     <script src="sci.js"></script>
 </body>
 </html>ٍ
