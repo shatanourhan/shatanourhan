@@ -359,8 +359,10 @@ main p {
 #articles {
     margin-top: 80px;
     width: 100%;  
-    height: 100vh;  
+    height: auto;  /* Allow height to be determined by content */
+    padding-bottom: 20px; /* Optional: Add some padding at the bottom */
 }
+
 
 #articles::before {
     content: '';
@@ -510,12 +512,18 @@ main p {
 }
 
 footer {
+    width: 100%;
+    height: auto;
+    bottom: 0;
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;  /* Reduced padding */
     margin-top: 10px;
     z-index: 2;
+    display: flex;     /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
 }
 
 .social-links {
@@ -524,25 +532,30 @@ footer {
     align-items: center;
     list-style-type: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 10px 0; /* Adjust margin */
 }
 
 .social-links a {
-    margin: 0 10px;
+    margin: 0 5px; /* Adjust margin */
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.5em; /* Keep this size for larger screens */
     transition: transform 0.3s ease;
 }
 
-.social-links a:hover {
-    transform: scale(1.2);
-}
 
-footer p {
-    margin: 10px 0 0;
-    font-size: 0.9em;
-}
+@media (max-width: 480px) {
+    footer {
+        padding: 10px 0; /* Adjust padding for mobile */
+    }
 
+    .social-links a {
+        font-size: 1.2em; /* Adjust font size for mobile */
+    }
+
+    footer p {
+        font-size: 0.8em; /* Adjust font size for mobile */
+    }
+}
 
 
     
@@ -730,6 +743,8 @@ footer p {
 
 @media (max-width: 480px) {
 
+
+
     #about{
         margin-top: 0;
         padding-top: 0;
@@ -741,8 +756,12 @@ footer p {
     #about p {
         font-size: 1em;
     }
+    #articles{
+        min-height: 100vh;
+    }
+
   #article{
-        height: 100vh;
+        height: 100%;
     }
 
     .articles h1 {
@@ -840,6 +859,7 @@ footer p {
     
 
 }
+
 
 
 
