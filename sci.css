@@ -509,6 +509,39 @@ main p {
     
 }
 
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+}
+
+footer p {
+    margin: 10px 0 0;
+    font-size: 0.9em;
+}
 
 
 
@@ -614,6 +647,7 @@ main p {
     
 }
 
+
 @media (max-width: 480px) {
 
     .rotating-image {
@@ -624,12 +658,31 @@ main p {
     }
 
     .round-button {
-        top: -260px;  
+        top: -270px;  
         display: flex; 
         justify-content: center; 
         align-items: center; 
         font-size: 10px;
-        width: 110px;
+        width: 100px;
+        height: 35px;
+        margin-top: 20px;
+        z-index: 4;
+    }
+    
+
+}
+
+@media (max-width: 440px) {
+
+   
+
+    .round-button {
+        top: -250px;  
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        font-size: 10px;
+        width: 100px;
         height: 40px;
         margin-top: 20px;
         z-index: 4;
@@ -637,6 +690,7 @@ main p {
     
 
 }
+
 
 
 @media (max-width: 768px) {
@@ -767,5 +821,25 @@ main p {
     }
     
 }
+
+@media (max-width: 380px) {
+
+   
+
+    .round-button {
+        top: -220px;  
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        font-size: 10px;
+        width: 100px;
+        height: 35px;
+        margin-top: 20px;
+        z-index: 4;
+    }
+    
+
+}
+
 
 

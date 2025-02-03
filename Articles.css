@@ -213,41 +213,40 @@ nav ul li a {
 
 
 footer {
-    margin-top: 50px; /* Adjust margin-top if needed */
-    text-align: center;
-    padding: 30px;
+    align-items: center;
     justify-content: center;
     background-color: #000;
-    color: #ffffff;
-    width: 100%;
-      justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    z-index: 1; /* Add this to ensure the footer is on top of other elements */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    z-index: 2;
 }
 
-
-
 .social-links {
-    display: flex;                
-    justify-content: center;         
-    align-items: center;           
-    list-style-type: none;          
-    margin: 0;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
 }
 
 .social-links a {
-    position: relative;
-    right: -150%;
-    margin: 0 10px; /* Increase margin for better spacing */
-    color: #fff;              
-    font-size: 1.5em; /* Increase font size for bigger icons */
-    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
 }
 
 .social-links a:hover {
-    transform: scale(1.2); /* Scale up the icons on hover */
+    transform: scale(1.2);
 }
 
+footer p {
+    margin: 10px 0 0;
+    font-size: 0.9em;
+}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
