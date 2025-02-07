@@ -54,7 +54,7 @@ body::before {
 
 header {
     background-color: #000000;
-    padding: 10px 30px;
+    padding: 20px 30px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -66,18 +66,15 @@ header {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    justify-content: space-between; 
-    align-items: center; 
-    margin-right: 200px;
+    justify-content: center; 
+    align-items: right; 
+    margin-left: 20px;
 }
 
 .navbar li {
-    margin-right: 20px;
+    margin: 10px;
 }
 
-.navbar li:first-child {
-    margin-right: auto; 
-}
 
 .navbar a {
     color: rgb(255, 255, 255);
@@ -596,6 +593,8 @@ footer {
 
 
 
+
+
 @media (max-width: 480px) {
     header {
         padding: 5px; 
@@ -703,6 +702,9 @@ footer {
     
 
 }
+
+
+
 
 
 
@@ -859,6 +861,7 @@ footer {
     
 
 }
+
 
 
 
