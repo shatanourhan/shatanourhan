@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="article.css">
     <link rel="icon" href="./images/scientist.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <title>Blackholes</title>
 </head>
 <body>
@@ -18,9 +20,11 @@
 
     <main class="content" id="home">
         <h1>Black Holes: A Comprehensive Study of Their Formation, Physics, and Cosmic Role</h1>
+        <h2>Abstract</h2>
+        <p>The concept of a black hole emerged from the field of theoretical physics and has evolved into one of the most compelling subjects in modern astrophysics, This article delves into the formation, types, and properties of black holes, as well as their significance in the context of general relativity and modern astrophysics. By examining observational techniques and the role of black holes in galactic evolution, we aim to provide a comprehensive understanding of these captivating celestial phenomena.</p>
         <h2>Introduction</h2>
         <p>
-            Black holes are some of the most intriguing and extreme objects in the universe, fascinating scientists and the public alike. Their defining feature is an incredibly strong gravitational field from which nothing, not even light, can escape once it crosses a threshold known as the event horizon. This intense gravitational force results from the collapse of massive stars under their own weight, which leads to a point of infinite density at the center—called the singularity. Black holes challenge our understanding of physics, acting as laboratories for testing extreme conditions, including gravity and quantum mechanics. While they might seem like cosmic oddities, black holes influence the formation of galaxies, the behavior of stars, and the structure of spacetime, playing a crucial role in shaping the universe as we know it.
+            Black holes are some of the most intriguing and extreme objects in the universe, fascinating scientists and the public alike. Their defining feature is an incredibly strong gravitational field from which nothing, not even light, can escape once it crosses a threshold known as the event horizon. This intense gravitational force results from the collapse of massive stars under their own weight, which leads to a point of infinite density at the center—called the singularity. Black holes challenge our understanding of physics, acting as laboratories for testing extreme conditions, including gravity, quantum mechanics, and the fundamental nature of reality. While they might seem like cosmic oddities, black holes influence the formation of galaxies, the behavior of stars, and the structure of spacetime, playing a crucial role in shaping the universe as we know it.
         </p>
         <img src="./images/blackholes.png" alt=" Several tens of shots of SgrA* show its large temporal variability, to the point that the reconstruction of an averaged image cannot accurately reproduce the state of the accretion stream (uncertain position of the overbrightness)." class="article-image">
         <h6> Several tens of shots of SgrA* show its large temporal variability, to the point that the reconstruction of an averaged image cannot accurately reproduce the state of the accretion stream (uncertain position of the overbrightness).</h6>
@@ -85,15 +89,17 @@
         <p>
             <span>Cygnus X-1:</span>
             
-            Discovered in the 1960s, Cygnus X-1 is one of the first black hole candidates identified. It is a stellar-mass black hole in a binary system with a companion star, emitting strong X-rays as material is accreted from the companion star.<br>
+            Cygnus X-1, discovered in the 1960s, is one of the first black hole candidates. It is a stellar-mass black hole in a binary system with a companion star. As material from the companion star is accreted by the black hole, it emits strong X-rays. Cygnus X-1 has a mass about 15 times that of the Sun and is an important object for studying black hole formation and behavior.<br>
             
             <span>Sagittarius A\(Milky Way’s Center):</span>
             
-            Sagittarius A* is the supermassive black hole at the center of our galaxy, with a mass of about 4.1 million solar masses. Observations of stars orbiting this black hole have provided strong evidence for its existence and have helped us understand the dynamics of our galactic center.<br>
+            Sagittarius A* is the supermassive black hole at the center of the Milky Way, with a mass of about 4.1 million solar masses. It is located around 26,000 light-years from Earth, in the direction of the constellation Sagittarius. Strong evidence for its existence comes from the orbits of nearby stars, such as S2, which move at high velocities due to its intense gravitational pull.<br>
+
+While it’s not currently consuming large amounts of material, Sagittarius A* has an accretion disk and occasionally emits flares. It plays a crucial role in the dynamics of the galactic center and is thought to influence the evolution of the Milky Way. The Event Horizon Telescope (EHT) aims to image its "shadow," providing further insights into its structure and behavior.<br>
             
             <span>M87\(Messier 87):</span>
             
-            M87* is the supermassive black hole at the center of the giant elliptical galaxy M87. It gained international attention when the EHT captured its first image, providing direct visual evidence of a black hole and offering insights into how black holes can influence their surroundings.
+            M87* is the supermassive black hole at the center of the galaxy M87. It gained international attention in 2019 when the Event Horizon Telescope (EHT) captured its first image, providing direct visual evidence of a black hole. This breakthrough offered valuable insights into how black holes can influence their surroundings, such as through powerful jets of energy emitted from the region near the event horizon.
             
         </p>
         <img src="./images/blackhole2.jpg" alt="A supermassive black hole at the center of a galaxy known as NGC 5548 peeping out over the edge of a swirling dusty disc. Here all kinds of material - dust, gas, and even stars - are steadily falling into the violent black hole, thereby creating a blaze of energetic ultraviolet light" class="article-image">
@@ -109,7 +115,7 @@ where \( G \) is the gravitational constant, \( M \) is the mass of the black ho
             
             <span>Kerr Black Holes:</span>
             
-            Kerr black holes are rotating black holes that have angular momentum. They differ from Schwarzschild black holes by having an ergosphere, where the effects of rotation allow for unique phenomena, such as frame dragging, which affects the motion of objects and light near the black hole.<br>
+            Kerr black holes are rotating black holes that have angular momentum. They differ from Schwarzschild black holes by having an ergosphere as mentioned, where the effects of rotation allow for unique phenomena, such as frame dragging, which affects the motion of objects and light near the black hole.<br>
             
             <span>No-Hair Theorem:</span>
             The no-hair theorem posits that black holes can be completely described by just three parameters: mass, charge, and spin. This simplification implies that all other information about the matter that formed or fell into the black hole is lost, leading to profound implications for theories of information and entropy in black hole physics.
@@ -175,7 +181,7 @@ where \( G \) is the gravitational constant, \( M \) is the mass of the black ho
     
     document.getElementById('linkedin').addEventListener('click', function(event) {
     event.preventDefault(); 
-    const postContent ="Future Implications of the Parker Solar Probe: Bridging Fundamental Science and Practical Applications:" + window.location.href; 
+    const postContent ="Black Holes: A Comprehensive Study of Their Formation, Physics, and Cosmic Role:" + window.location.href; 
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(postContent)}`;
     window.open(url, '_blank');
 });
@@ -183,7 +189,7 @@ where \( G \) is the gravitational constant, \( M \) is the mass of the black ho
 
 document.getElementById('x').addEventListener('click', function(event) {
     event.preventDefault(); 
-    const postContent = "Future Implications of the Parker Solar Probe: Bridging Fundamental Science and Practical Applications:" + window.location.href; 
+    const postContent = "Black Holes: A Comprehensive Study of Their Formation, Physics, and Cosmic Role:" + window.location.href; 
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(postContent)}`;
     window.open(url, '_blank');
 });
