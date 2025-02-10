@@ -533,10 +533,15 @@ footer {
 }
 
 .social-links a {
+    z-index: 10;
     margin: 0 5px; /* Adjust margin */
     color: #fff;
     font-size: 1.5em; /* Keep this size for larger screens */
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover  {
+    transform: scale(1.2);
 }
 
 
