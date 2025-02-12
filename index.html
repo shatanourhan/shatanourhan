@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Css/Dev.css">
-    <link rel="icon" href="images/programmer.png" type="image/png">
+    <link rel="stylesheet" href="Css/sci.css">
+    <link rel="icon" href="images/scientist.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Preahvihear&display=swap" rel="stylesheet">
-    <title>Nour the Dev</title>
+    <title>Nourhan Shata</title>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-29GR4SLSNR"></script>
@@ -22,108 +22,68 @@
     <header>
         <nav class="navbar">
             <ul>
-                <li><a href="/Sci/"><img src="images/scientist.png" alt="Icon" class="nav-icon"></a></li>
-                <li class="nav-item"><a href="#home">Home</a></li>
-                <li class="nav-item"><a href="#Services">Services</a></li>
-                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="Articles/">Articles</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="content fade-in" id="home">
-        <div class="column">
-            <p id="pn" class="hover-text" style="display: none;"> Hi, I am <span>Nour</span></p>
-            <img src="images/Arrow.png" alt="Sample Image" class="arrow" style="display: none;">
-            <div class="image-container">
-                <img src="images/a-white-girl-with-hijab-and-round-glasses.png" alt="Sample Image" class="image">
-            </div>
-            <div class="paragraphs">
-                <p id="p1">A developer who</p>
-                <p id="p2">crafts code</p>
-                <p id="p3">that's out of this <span>world</span></p>
-                <p id="p4">because great software is as boundless as the universe.</p>
-            </div>
+        <img src="images/Space.png" alt="Space" class="rotating-image">
+        <div class="image-container">
+            <img src="images/a-white-girl-with-hijab-and-round-glasses.png" alt="Sample Image" class="hover-image">
         </div>
-        <div class="paragraphs2">
-            <p id="p5">I'm a Web Developer.</p>
-            <p id="p6">Front-end developer & UI/UX designer</p>
-            <p id="p7">A self-taught freelancer, functioning in the industry for 2+ years now.<br>
-                I make meaningful and delightful digital products that create an equilibrium<br>
-                between user needs and business goals.</p>
-            </div>
+        <h1>Your Fav</h1>
+        <h2 id="title">Rocket Scientist</h2>
+        <p>in the making</p>
+        <div class="button-container">
+            <button class="round-button" onclick="window.location.href='mailto:shatanourhan@outlook.com?subject=Lebenslauf Anfrage&body=Können Sie mir bitte Ihren Lebenslauf schicken?'">
+                <img src="images/Subtract.png" alt="Sample Image" class="button-image">My Resume
+            </button>        
+        </div>
     </main>
+    <section id="about" class="fade-in">
+        <h6>WHO I AM?</h6>
+        <div class="container">
+        <p>A spacecraft engineer focused on propulsion systems and thermal control, with unwavering devotion to astrophysics,  particularly in the exploration of stellar phenomena.</p>
+        <p>Through my studies and personal curiosity, I explore how engineering and astrophysics intersect. This website is a space for me to share my research, articles, and insights on these topics as I continue to deepen my understanding of the universe.</p>
+        <p >I'm also interested in how emerging technologies and artificial intelligence are shaping the future of aerospace, which influences both my academic work and broader career perspective.</p>
+        <!--<p >While my academic pursuits keep me busy, I find joy and inspiration in various hobbies. Drawing, hiking, and stargazing allow me to unwind and connect with my creative and adventurous sides. I love immersing myself in books and I am also a tinker at heart electronics is my thing. In my downtime, I’m an avid football, basketball, and MMA fan, and, as they say, a good chess player.</p>
+        --><p>Feel free to reach out with any feedback on my writing. For more details on my academic and technical background, please refer to my Resume.</p>
+    </div>
+    <div class="rocket"></div>
+    </section>
 
-<section class="fade" id="Services">
-            <h1>Services</h1>
-    <div class="services-container">
-        <div class="service-card">
-            <div class="icon-container">
-                <i class="fa-solid fa-user"><img src="images/ui.png" alt="Icon" class="nav-icon"></i>
-            </div>
-            <h3>UI/UX Design</h3>
-            <p>
-                creating expert UI/UX design services to create intuitive and visually appealing interfaces. By focusing on user-centered design principles,<br> I ensure that every project enhances usability and delivers a seamless experience, helping clients engage their audience effectively.</p>
+    <section id="articles" class="articles fade-in"> 
+        <h1>Most Recent Articles</h1>
+        
+    <div class="containerblog">
+        <div class="card">
+            <img src="images/accm.jpg" alt="Article 7">
+            <h2>The Engine of Cosmic Energy</h2>
+            <p>Explore the black hole's accretion, where matter spirals into fuel immense energy. and the observational evidence that reveals its role in shaping the universe.</p>
+            <a href="1.Journey-of-Stars/" class="read-more">Read</a>
         </div>
-
-        <div class="service-card">
-            <div class="icon-container">
-                <i class="fa-solid fa-cart-shopping"><img src="images/web-programming.png" alt="Icon" class="nav-icon"></i>
-            </div>
-            <h3>Building a Website</h3>
-            <p>
-                creating custom websites tailored to meet the unique needs of my clients. From concept to launch, I ensure an engaging user experience, responsive design, and seamless functionality to help businesses establish a strong online presence.</p>
+        <div class="bigcard">
+            <img src="images/supernova.webp" alt="Article 6">
+            <h2>The Silent Collapse</h2>
+            <p>The science of failed supernovae and direct black hole formation. Learn about the mechanisms driving these phenomena and the observational evidence revealing their impact on stellar evolution.</p>
+            <a href="3.Solar-Corona/" class="read-moreb">Read</a>
+        </div>
+        <div class="card">
+            <img src="images/ligo20160211_Tn.jpg" alt="Article 8">
+            <h2>Black Holes as Cosmic Messengers</h2>
+            <p>Gravitational wave astronomy unveils spacetime and black hole mysteries, with breakthroughs offering deeper cosmic insights.</p>
+            <a href="2.Nebula/" class="read-more">Read</a>
         </div>
     </div>
-    <h1>Tools I use</h1>
-    <div class="circle-container">
-       
-        <div class="circle-row">
-          <div class="circle"><img src="images/html-5.png" alt="Icon"></div>
-          <div class="circle"><img src="images/css-3.png" alt="Icon"></div>
-          <div class="circle"><img src="images/js.png" alt="Icon"></div>
-          <div class="circle"><img src="images/python.png" alt="Icon"></div>
-          <div class="circle"><img src="images/c-.png" alt="Icon"></div>
-        </div>
-        
-        <div class="circle-row">
-          <div class="circle"><img src="images/science.png" alt="Icon"></div>
-          <div class="circle"><img src="images/typescript.png" alt="Icon"></div>
-          <div class="circle"><img src="images/sass.png" alt="Icon"></div>
-          <div class="circle"><img src="images/figma.png" alt="Icon"></div>
-        </div>
-      </div>
 </section>
-
-<section class="sec-2" id="contact">
-    <section class="sign-up-form animate" id="sign-up-form">
-        <section class="h1-info">
-          <h1>Contact Me</h1>
-          <p class="main-description">
-            For technical inquiries or project collaborations, feel free to get in touch.
-          </p><!--
-          <div class="social-links">
-                <a href="" target="_blank" class="social-icon youtube"><i class="fab fa-linkedin"></i></a>
-                <a href="" target="_blank" ><i class="fab fa-x"></i></a>
-                <a href="" target="_blank" ><i class="fab fa-github"></i></a>
-        </div>-->
-          
-        </section>
-        <section class="product-img">
-            <form id="contact-form" method="post">
-                <div class="form-group">
-                    <input type="text" name="Name" placeholder="Your Name" required class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="email" name="Email" placeholder="Your Email" required class="form-control">
-                </div>
-                <div class="form-group">
-                    <textarea name="Message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
-                </div>
-                <button type="submit" class="submit-button">Send Message</button>
-            </form>
-        </section>
-    </section>
-</section>
-<script src="JS/Dev.js"></script>
+<footer> <div class="social-links">
+    <a href="https://x.com/shatanourhan" target="_blank" ><i class="fab fa-x"></i></a>
+    <a href="https://www.linkedin.com/in/shatanourhan/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
+<p>&copy; 2024 Shata Nourhan. All rights reserved.</p></footer>
+    <script src="JS/sci.js"></script>
 </body>
-</html>
+</html>ٍ

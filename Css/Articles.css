@@ -1,10 +1,13 @@
+html, body {
+    height: 100%; /* Ensure the html and body take up the full height */
+    margin: 0; /* Remove default margin */
+}
+ 
 body {
-    min-height: 100vh; /* Add this to ensure the body takes up the full height of the screen */
-    margin-top: auto;
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
     font-family: Arial, Helvetica;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     background-color: #000;
     background-image: url('../images/Group\ 3.png');
     background-size: cover;
@@ -12,54 +15,58 @@ body {
     background-repeat: no-repeat;
 }
 
+main {
+    flex: 1; /* Allow main to grow and take up available space */
+    color: #ffffff;
+    padding: 20px;
+    margin: 10px; /* Keep margin for spacing */
+    margin-top: 30px; /* Keep margin for spacing */
+    margin-bottom: 30vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
 header {
-    background: #000;
-    color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
+    background-color: #000000;
+    padding: 20px 30px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100000000;
 }
 
-nav ul {
-    list-style: none;
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
+    justify-content: center; 
+    align-items: right; 
+    margin-left: 20px;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+.navbar li {
+    margin: 10px;
 }
 
-nav ul li a {
-    color: #ffffff;
+
+.navbar a {
+    color: rgb(255, 255, 255);
     text-decoration: none;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in;
 }
-.nav-icon {
-    width: 40px; 
-    height: auto; 
-    margin-right: 8px;
-    margin-left: 200px; 
-    margin-top: 10px;
-    
 
-}
-.nav-icon:hover {
+.navbar a:hover {
+    background: -webkit-linear-gradient(360deg, rgb(132, 71, 189) 27%, rgb(255, 127, 54) 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     transform: scale(1.5);
-    transition: transform 0.3s ease;}
-
-
-    main {
-        min-height: 100vh; /* Add this to ensure the main content takes up the full height of the screen */
-        color: #ffffff;
-        padding: 20px;
-        margin: 10px;
-        margin-top: 30px;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-bottom: 100px; /* Add padding to the bottom to create space for the footer */
-    }
-
+}
 
 .text{
     margin: auto;
@@ -213,14 +220,16 @@ nav ul li a {
 
 
 footer {
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: auto; /* Ensure footer height is auto */
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
+    padding: 10px 0; /* Reduced padding */
     z-index: 2;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
 }
 
 .social-links {
@@ -229,29 +238,30 @@ footer {
     align-items: center;
     list-style-type: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 10px 0; /* Adjust margin */
 }
 
 .social-links a {
-    margin: 0 10px;
+    z-index: 10;
+    margin: 0 5px; /* Adjust margin */
     color: #fff;
-    font-size: 1.5em;
-    transition: transform 0.3s ease;
+    font-size: 1.5em; /* Keep this size for larger screens */
+    transition: all 0.3s ease;
 }
 
-.social-links a:hover {
+.social-links a:hover  {
     transform: scale(1.2);
 }
 
-footer p {
-    margin: 10px 0 0;
-    font-size: 0.9em;
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
+   
     .grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+    main{
+        margin-bottom: 40vh;
     }
 }
 
@@ -259,6 +269,21 @@ footer p {
     .grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    main{
+        margin-bottom: 90vh;
+
+    }
+
+}
+@media (max-width: 830px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    main{
+        margin-bottom: 120vh;
+
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -281,6 +306,10 @@ footer p {
     .read-moreb {
         margin-top: 20px;
     }
+    main{
+        margin-bottom: 390vh;
+
+    }
 }
 
 @media (max-width: 576px) {
@@ -294,5 +323,24 @@ footer p {
 
     .card p, .bigcard p {
         font-size: 1em;
+    }
+    main{
+        margin-bottom: 200vh;
+
+    }
+   
+}
+
+@media (max-width: 440px) {
+    main{
+        margin-bottom: 355vh;
+
+    }
+}
+
+@media (max-width: 390px) {
+    main{
+        margin-bottom: 390vh;
+
     }
 }
