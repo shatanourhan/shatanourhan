@@ -24,6 +24,19 @@ const titles = ["Rocket Scientist", "Astrophysicists"];
 
         startTypingEffect();
 
+ 
+    document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.classList.add('flipped');
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.classList.remove('flipped');
+    });
+});
+
+
+
 
 function rotateImageOnScroll() {
     const scrollTop = window.scrollY;
