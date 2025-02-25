@@ -75,7 +75,7 @@
                         Interesting how one question leads to thousands, huh? But maybe that’s the point. The universe doesn’t show us everything, but it does keep us asking.<br>
                     </p>
                     <div class="share">
-                        <a href="https://www.shatanourhan.space/Thoughts/#Wrestling-with-the-Mystery-of-Existence" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
+                        <a href="https://www.shatanourhan.space/Thoughts/#Wrestling-with-the-Mystery-of-Existence" class="share-button" target="_blank"><i class="fa-solid fa-share"></i></a>
                     </div>
                     </div>
                     <a href="#" class="read-more">Read More</a>
@@ -114,7 +114,7 @@
                         <div class="share">
                            
                             
-                            <a href="https://www.shatanourhan.space/Thoughts/#The-Quiet-Audacity-of-Existence" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
+                            <a href="https://www.shatanourhan.space/Thoughts/#The-Quiet-Audacity-of-Existence" class="share-button" target="_blank"><i class="fa-solid fa-share"></i></a>
                         </div>
                         </div>
                         <a href="#" class="read-more">Read More</a>
@@ -149,7 +149,7 @@
                         </p>
                         <div class="share">
                            
-                            <a href="https://www.shatanourhan.space/Thoughts/#Doubts" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
+                            <a href="https://www.shatanourhan.space/Thoughts/#Doubts" class="share-button" target="_blank"><i class="fa-solid fa-share"></i></a>
                         </div>
                         </div>
                         <a href="#" class="read-more">Read More</a>
@@ -235,7 +235,7 @@ Maintaining a flawless simulation takes a ton of processing power. If this were 
                         </p>
                         <div class="share">
                            
-                            <a href="https://www.shatanourhan.space/Thoughts/#Is-Reality-Fundamentally-Mathematical?" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
+                            <a href="https://www.shatanourhan.space/Thoughts/#Is-Reality-Fundamentally-Mathematical?" class="share-button" target="_blank"><i class="fa-solid fa-share"></i></a>
                         </div>
                         </div>
                         <a href="#" class="read-more">Read More</a>
@@ -282,7 +282,7 @@ So, is nothing real? Or is it just another way of talking about the boundaries o
                     </p>
                     <div class="share">
                            
-                            <a href="https://www.shatanourhan.space/Thoughts/#The-Nature-of-Nothingness" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
+                            <a href="https://www.shatanourhan.space/Thoughts/#The-Nature-of-Nothingness" class="share-button" target="_blank"><i class="fa-solid fa-share"></i></a>
                     </div>
                     </div>
                         <a href="#" class="read-more">Read More</a>
@@ -306,15 +306,20 @@ So, is nothing real? Or is it just another way of talking about the boundaries o
 
 
         
-        document.getElementById('share').addEventListener('click', function(event) {
-            event.preventDefault(); 
-            const linkToCopy = window.location.href; 
-            navigator.clipboard.writeText(linkToCopy).then(function() {
-                alert('Link copied to clipboard!');
-            }, function(err) {
-                console.error('Could not copy text: ', err);
-            });
+document.querySelectorAll('.share-button').forEach(button => {
+    button.addEventListener('click', function(event) { 
+        event.preventDefault(); // Stop it from opening a new tab
+
+        const linkToCopy = this.getAttribute('href'); // Get the link from the <a> tag
+        
+        navigator.clipboard.writeText(linkToCopy).then(function() {
+            alert('Link copied to clipboard!');
+        }).catch(function(err) {
+            console.error('Could not copy text: ', err);
         });
+    });
+});
+
 
 
         document.querySelectorAll('.nav-item').forEach(item => {
