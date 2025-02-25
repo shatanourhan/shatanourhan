@@ -242,7 +242,7 @@ Maintaining a flawless simulation takes a ton of processing power. If this were 
                         <button class="close-btn">&times;</button>
                 </div>
 
-                <div class="card" >
+                <div class="card" id="The-Nature-of-Nothingness">
                    
                     <h2>The Nature of Nothingness</h2>
                     <p>Nothingness is one of those concepts that seem clear until you start questioning them. Can true nothingness exist, or is it just the absence of something we can recognize? If there was ever a state of absolute nothingness, how did anything come to be? And if something always existed, was nothingness ever real to begin with? It’s a paradox that seems to fold in on itself the deeper you go.
@@ -251,7 +251,7 @@ Maintaining a flawless simulation takes a ton of processing power. If this were 
 This raises unsettling questions about the origins of everything. If space and time themselves are part of the universe, what could have preceded them? Some theories suggest that what we perceive as a universe emerging from nothing is actually a transition between different states of existence—vacuum energy fluctuations, quantum tunneling, or cycles of cosmic rebirth. But even these explanations assume the presence of underlying laws.
                     </p>
 
-                <div class="hidden-content" id="The-Nature-of-Nothingness">
+                <div class="hidden-content">
                     <p>
                         Can we ever reach a point where there is truly nothing, where even the rules cease to exist? Or is nothingness just another way of describing an unfamiliar kind of something?
 
@@ -285,7 +285,7 @@ So, is nothing real? Or is it just another way of talking about the boundaries o
                             <a href="#" id="share" target="_blank"><i class="fa-solid fa-share"></i></a>
                     </div>
                     </div>
-                        <a href="" class="read-more">Read More</a>
+                        <a href="#" class="read-more">Read More</a>
                         <button class="close-btn">&times;</button>
                 </div>
 
@@ -390,6 +390,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the fragment identifier from the URL
+    let postId = window.location.hash.substring(1); // Removes the "#"
+    
+    if (postId) {
+        // Find the corresponding post
+        let targetPost = document.getElementById(postId);
+        
+        if (targetPost) {
+            // Find and trigger the "Read More" action
+            let readMoreButton = targetPost.querySelector(".read-more");
+            if (readMoreButton) {
+                readMoreButton.click(); // Simulates a click on "Read More"
+            }
+        }
+    }
+});
 
 
 
