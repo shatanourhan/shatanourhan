@@ -729,11 +729,48 @@ input .error-msg::placeholder {
 }
 }
 
+@media (max-width: 390px) {
+
+    #Services{
+        height: 100%;
+        width: 70%;
+        transition: transform 1s ease;
+        transform: none !important;
+        
+    }
+    .circle-container{
+        width: 50%;
+        margin: 3px;
+    }
+    .circle {
+        transform: scale(0.7); /* Shrinks the entire container */
+        margin: 0px;
+    }
+    
+    .circle img {
+        width: 60%; /* Adjust image size */
+        height: auto;
+    }
+    #contact {
+        height: 80vh;
+        width: 80%;
+        transition: transform 1s ease;
+        padding-top: 60px;
+        transform: none !important;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+}
+
 
 
 @media only screen and (max-width: 1200px) {
     .service-card {
         width: calc(50% - 40px);
+    }
+    .none{
+        display: none;
     }
 }
 
