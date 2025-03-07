@@ -46,7 +46,7 @@ header {
     padding: 0;
     justify-content: center; 
     align-items: right; 
-    margin-right: 30px;
+    margin-right: 50px;
 }
 
 .navbar li {
@@ -315,6 +315,7 @@ footer {
 @media (max-width: 440px) {
     main{
         margin-bottom: 355vh;
+        margin-left: 40px;
 
     }
 }

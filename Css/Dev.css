@@ -702,6 +702,31 @@ input .error-msg::placeholder {
     text-align: left; 
     margin-top: 50px;
 }
+
+#Services{
+    height: 100%;
+    width: 70%;
+    transition: transform 1s ease;
+    transform: none !important;
+    
+}
+.circle {
+    transform: scale(0.8); /* Shrinks the entire container */
+}
+
+.circle img {
+    width: 70%; /* Adjust image size */
+    height: auto;
+}
+#contact {
+    height: 80vh;
+    width: 80%;
+    transition: transform 1s ease;
+    padding-top: 60px;
+    transform: none !important;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
 }
 
 
