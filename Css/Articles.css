@@ -312,7 +312,7 @@ footer {
    
 }
 
-@media (max-width: 440px) {
+@media (max-width: 460px) {
     main{
         margin-bottom: 355vh;
         margin-left: 40px;
