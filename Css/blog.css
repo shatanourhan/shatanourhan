@@ -462,6 +462,7 @@ footer {
 
     }
 
+
 }
 
 @media (max-width: 460px) {
@@ -479,4 +480,14 @@ footer {
 
     }
 }
+
+span{
+    font-weight: bold;
+
+}
+
+.arabic-text {
+    direction: rtl;
+    text-align: right;
+  }
 
