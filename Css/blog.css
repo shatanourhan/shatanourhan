@@ -256,6 +256,11 @@ body.blurred .containerblog {
     pointer-events: none; /* Prevent clicks on other elements */
 }
 
+/* Hide all cards except the expanded one when body has .blurred */
+body.blurred .card:not(.expanded) {
+    display: none !important;
+}
+
 
 
 .grid {
@@ -377,7 +382,17 @@ footer {
 .social-links a:hover  {
     transform: scale(1.2);
 }
-
+span{
+    font-size: 0.9em;
+    
+    
+}
+.left-align {
+  text-align: left;
+  margin: 0;
+  font-weight: bold;
+  
+}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
