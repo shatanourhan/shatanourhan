@@ -12,12 +12,12 @@
         }
         
         :root {
-            --primary: #ffffff;
-            --secondary: #383838;
-            --accent: #aba4c4;
-            --text: #8892b0;
-            --text-light: #6184f5;
-            --white: #000000;
+            --primary: #000000;
+            --secondary: #0c0c0c;
+            --accent: #dad9d9;
+            --text: #999999;
+            --text-light: #cdc3f8;
+            --white: #ffffff;
         }
         
         body {
@@ -60,7 +60,7 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 0;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(100, 255, 218, 0.1);
@@ -304,7 +304,7 @@
             background: var(--secondary);
             padding: 2.5rem;
             border-radius: 8px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(198, 134, 250, 0.1);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -348,7 +348,7 @@
         .research-icon {
             width: 50px;
             height: 50px;
-            background: rgba(100, 255, 218, 0.1);
+            background: rgba(208, 166, 255, 0.1);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -426,7 +426,7 @@
         }
         
         .skill-tag {
-            background: rgba(100, 255, 218, 0.1);
+            background: rgba(208, 166, 255, 0.1);
             color: var(--accent);
             padding: 0.7rem 1.5rem;
             border-radius: 25px;
@@ -493,7 +493,7 @@
         .publication-link {
             display: inline-block;
             padding: 0.5rem 1.2rem;
-            background: rgba(100, 255, 218, 0.1);
+            background: rgba(208, 166, 255, 0.1);
             color: var(--accent);
             border: 1px solid var(--accent);
             border-radius: 4px;
@@ -576,7 +576,7 @@
             text-align: center;
             padding: 3rem;
             color: var(--text);
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            border-top: 1px solid rgba(208, 166, 255, 0.1);
         }
         
         /* Responsive */
@@ -634,7 +634,7 @@
             <div class="hero-image-section">
                 <div class="image-wrapper">
                     <div class="image-frame">
-                       <img src="" alt="Shata Nourhan" class="profile-image"> 
+                       <img src="../images/bohr.jpg" alt="Shata Nourhan" class="profile-image"> 
                         <div class="image-placeholder">👤</div>
                     </div>
                 </div>
@@ -762,7 +762,7 @@
             <div class="timeline-item">
                 <div class="timeline-title">Undergraduate Research Assistant</div>
                 <div class="timeline-subtitle">Max Planck Institute</div>
-                <div class="timeline-date">2024 - 2025</div>
+                <div class="timeline-date"></div>
                 <div class="timeline-description">
                     Conducted research on black hole physics under the supervision of [Professor Name]. Developed numerical simulations of particle trajectories in Schwarzschild geometry and contributed to computational analysis of gravitational wave signatures from black hole mergers. Presented findings at university research symposium.
                 </div>
@@ -770,17 +770,17 @@
 
             <div class="timeline-item">
                 <div class="timeline-title">Summer Research Program</div>
-                <div class="timeline-subtitle">REU in Gravitational Physics, [Institution]</div>
-                <div class="timeline-date">Summer 2024</div>
+                <div class="timeline-subtitle">REU in Gravitational Physics, MPI</div>
+                <div class="timeline-date"></div>
                 <div class="timeline-description">
                     Participated in intensive research experience focusing on computational methods in general relativity. Collaborated with graduate students on projects involving numerical relativity and black hole simulations using Python and specialized physics libraries.
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-title">Teaching Assistant</div>
-                <div class="timeline-subtitle">Classical Mechanics & Thermodynamics</div>
-                <div class="timeline-date">2024 - 2025</div>
+                <div class="timeline-title">Young Quantum Social Scientist</div>
+                <div class="timeline-subtitle">TUM THINK THANK</div>
+                <div class="timeline-date"></div>
                 <div class="timeline-description">
                     Assisted in teaching undergraduate physics courses, leading problem-solving sessions and providing mentorship to students. Developed supplementary materials on applications of thermodynamics to astrophysical systems.
                 </div>
@@ -825,12 +825,12 @@
         <p style="max-width: 700px; color: var(--text); font-size: 1.05rem; margin-bottom: 2rem;">
             <strong>Nourhan</strong> is currently applying to graduate programs in theoretical physics and welcomes inquiries regarding research collaborations, graduate opportunities, or discussions on black hole physics and quantum gravity.
         </p>
-        <div class="contact-grid">
+        <div class="contact-grid"><!--
             <div class="contact-card">
                 <div class="contact-icon">✉️</div>
                 <div class="contact-label">Email</div>
-                <a href="mailto:shata.nourhan@email.com">shata.nourhan@email.com</a>
-            </div>
+                <a href="mailto:shata.nourhan@email.com">shatanourhan@outlook.com</a>
+            </div>-->
             <div class="contact-card">
                 <div class="contact-icon">💼</div>
                 <div class="contact-label">LinkedIn</div>
@@ -841,11 +841,14 @@
                 <div class="contact-label">ORCID iD</div>
                 <a href="#">0000-0000-0000-0000</a>
             </div>
+             <div class="contact-card">
+                <div class="contact-icon">📄</div>
+                <div class="contact-label">Google scholar</div>
+                <a href="https://scholar.google.com/citations?user=ew2F13wAAAAJ&hl=en">github.com/shatanourhan</a>
+                </div>
             <div class="contact-card">
                 <div class="contact-icon">💻</div>
                 <div class="contact-label">GitHub</div>
                 <a href="#">github.com/shatanourhan</a>
             </div>
-            <div class="contact-card">
-                <div class="contact-icon">📄</div>
-                <div
+          

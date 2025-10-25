@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinklets - Wrestling with the Mystery of Existence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            background: radial-gradient(circle at 20% 50%, rgb(32, 32, 32) 0%, rgb(15, 15, 15) 100%);
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Animated particle background with depth */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(94, 87, 87, 0.12) 2px, transparent 2px),
+                radial-gradient(circle at 85% 75%, rgba(54, 54, 59, 0.08) 1.5px, transparent 1.5px),
+                radial-gradient(circle at 50% 50%, rgba(23, 23, 26, 0.06) 1px, transparent 1px),
+                radial-gradient(circle at 30% 80%, rgba(19, 19, 20, 0.1) 1px, transparent 1px);
+            background-size: 200px 200px, 250px 250px, 150px 150px, 180px 180px;
+            animation: particleFloat 30s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Additional layer for depth */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(180deg, transparent 0%, rgba(10, 10, 15, 0.3) 50%, transparent 100%),
+                linear-gradient(90deg, transparent 0%, rgba(10, 10, 15, 0.2) 50%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: translateY(0) scale(1);
+            }
+            33% { 
+                opacity: 0.8;
+                transform: translateY(-15px) scale(1.05);
+            }
+            66% { 
+                opacity: 0.6;
+                transform: translateY(-8px) scale(0.98);
+            }
+        }
+
+        main {
+            flex: 1;
+            color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            margin-top: 30px;
+            margin-bottom: 30vh;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .intro-section {
+            max-width: 900px;
+            margin: 80px auto 60px;
+            padding: 50px 60px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 400;
+            line-height: 2.1;
+            background: 
+                linear-gradient(135deg, rgba(26, 26, 26, 0.4), rgba(25, 25, 40, 0.6)),
+                linear-gradient(225deg, rgba(49, 49, 49, 0.2), transparent);
+            border-radius: 20px;
+            border: 1px solid rgba(31, 31, 31, 0.15);
+            box-shadow: 
+                0px 10px 40px rgba(0, 0, 0, 0.6),
+                inset 0px 1px 2px rgba(255, 255, 255, 0.1);
+            color: #d8d8e5;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeIn 1.4s ease-out 0.2s forwards;
+            transition: filter 0.4s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .intro-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0px 15px 50px rgba(0, 0, 0, 0.7),
+                inset 0px 1px 2px rgba(255, 255, 255, 0.15);
+        }
+
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200,200,255,0.06), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .intro-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(180,180,220,0.4), transparent);
+            box-shadow: 0 0 10px rgba(180,180,220,0.3);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                box-shadow: 0px 4px 25px rgba(255, 255, 255, 0.2);
+            }
+            100% {
+                box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        #articles {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+            transition: filter 0.4s ease;
+        }
+
+        .containerblog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            margin: 10px;
+            background: 
+                linear-gradient(145deg, rgba(35, 35, 50, 0.85), rgba(20, 20, 35, 0.95)),
+                radial-gradient(circle at 30% 30%, rgba(60, 60, 90, 0.3), transparent);
+            border: 1px solid rgba(180, 180, 220, 0.18);
+            min-height: 500px;
+            height: auto;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            width: calc(90% - 20px);
+            text-align: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 50px 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200,200,255,0.12), transparent);
+            transition: left 0.9s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(150, 150, 200, 0.6) 25%, 
+                rgba(180, 180, 220, 0.8) 50%, 
+                rgba(150, 150, 200, 0.6) 75%, 
+                transparent 100%);
+            transform: scaleX(0);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px rgba(180, 180, 220, 0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(180, 180, 220, 0.35);
+            box-shadow: 
+                0 16px 64px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(100, 100, 150, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hidden-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .card.expanded .hidden-content {
+            display: block;
+            opacity: 1;
+        }
+
+        .card.expanded .read-more {
+            display: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            background: rgba(30, 30, 30, 0.95);
+            transition: all 0.3s ease;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .card.expanded .close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(220, 50, 50, 0.95);
+            border-color: rgba(255, 80, 80, 0.8);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(220, 50, 50, 0.5);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+        }
+
+        .card.expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 65%;
+            max-width: 850px;
+            height: 75vh;
+            background: linear-gradient(135deg, rgba(35, 35, 35, 0.98), rgba(25, 25, 25, 0.98));
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 60px 70px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+
+        body.blurred {
+            overflow: hidden;
+        }
+
+        body.blurred .intro-section {
+            filter: blur(10px);
+        }
+
+        body.blurred .card:not(.expanded) {
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .card h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.3em;
+            font-weight: 300;
+            margin: 0 0 30px 0;
+            color: #f5f5ff;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .card.expanded h2 {
+            text-align: center;
+            color: #f5f5ff;
+            font-size: 2.6em;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(180, 180, 220, 0.2);
+            position: relative;
+        }
+
+        .card.expanded h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(180, 180, 220, 0.8), transparent);
+            box-shadow: 0 0 10px rgba(180, 180, 220, 0.5);
+        }
+
+        .card p {
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            color: #d0d0e0;
+            height: auto;
+            font-size: 1.05em;
+            text-align: center;
+            font-weight: 300;
+            line-height: 1.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card.expanded p {
+            color: #e8e8f5;
+            text-align: left;
+            font-size: 1.15em;
+            line-height: 2.1;
+            padding: 0;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin: 30px 10px 10px;
+            padding: 14px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .read-more::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .read-more:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .read-more:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom scrollbar */
+        .card.expanded::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .card.expanded::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .card.expanded::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+            border-radius: 10px;
+            border: 2px solid rgba(35, 35, 35, 0.98);
+        }
+
+        .card.expanded::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.4));
+        }
+
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card.expanded {
+                width: 90%;
+                height: 85vh;
+                padding: 40px 30px;
+            }
+
+            .intro-section {
+                padding: 30px 25px;
+                margin: 40px auto;
+            }
+
+            .card h2 {
+                font-size: 1.8em;
+            }
+
+            .card.expanded h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card.expanded {
+                width: 95%;
+                padding: 30px 20px;
+            }
+
+            .card h2 {
+                font-size: 1.5em;
+            }
+
+            .card p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main id="home">
+        <div class="intro-section">
+            <p>
+                As a Muslim, I believe that everything in existence—whether it's the laws of physics, the mysteries of the universe, 
+                or the complexities of human thought—is ultimately created and sustained by God. This blog is simply my attempt 
+                to explore the wonders of His creation, to reflect on the questions that arise in my mind, and to marvel at the 
+                infinite wisdom behind it all.
+            </p>
+        </div>
+
+        <section id="articles" class="wrapper">
+            <div class="containerblog grid">
+                <div class="card">
+                    <h2>Wrestling with the Mystery of Existence</h2>
+                    <p>Every now and then, I catch myself trying to wrap my head around how anything exists at all. You know — casual Tuesday thoughts.
+
+                    So here's a mind-bender: Try to picture "nothing". Not empty space, not darkness — just "nothing." Tough, right? Almost impossible. That's because, even so, the notion of "nothing" incorporates the notion of "something."
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        It just seems so counterintuitive to me that "something" could come from "absolutely nothing". All we know from the largest galaxies to the smallest subatomic particles comes from something else. The cosmos or the void of it that we think of as "empty" — is not actually empty. It's full of energy, buzzing along unseen but palpably there.<br>
+                        
+                        Then there's the Big Bang — the seminal moment when space, time and matter as we know it emerged. But the question that remains, the one that keeps me up at night, is: what happened before? Well, Physics has its ongoing theories, but there is a frontier beyond which explanation evaporates into uncertainty. If "nothing" truly existed before the Big Bang, where did that nothing come from?<br>
+                        
+                        Even when we attempt to imagine it, we summon images — blackness, a void — but even that is still "something". It is not the lack of everything; it is the lack of things. And that's not the same thing as "nothing," is it?<br>
+
+                        Perhaps we'll never actually understand all that led to this point. But one thing is certain: whatever started everything, it had to be something. Something with purpose and power. Something that can cause all of this to happen.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+
+                <div class="card">
+                    <h2>The Quiet Audacity of Existence</h2>
+                    <p>So how did we get here? What had to happen for you to be reading these words? It's a thought that spirals quickly, unraveling into the deeper mystery of existence itself. After all, the fact that any of this is even happening is so improbable, so delicate, that it almost feels that it has to be intentional.
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        Think about it: here we are—bundles of atoms, stitched together by laws we didn't write, casually experiencing life as if it's the most natural thing in the world. Which it is, apparently. But the fact that everything aligns just right for you to sit here reading this? That feels personal. Like the cosmos nudged you and said, "You. You're up next."<br>
+
+                        The universe operates with such mathematical precision, it feels as though it was made to fit together perfectly, as if it had a purpose from the start. Constants, forces, and laws calibrate reality so tightly that even minor deviations would dissolve everything we recognize.<br>
+                        
+                        Stephen Hawking once pointed out that if the rate of expansion after the Big Bang had been smaller by even one part in a hundred thousand million million, the universe would have collapsed before it even got started. That's not chance. That's a configuration so delicate, so improbable, that it has to feel as if a guiding hand is behind it.<br>
+                        
+                        The point of this reflection isn't about solving the mystery—it's about learning to live alongside it. That's, to me, the most philosophical aspect of existence grounded in science. It's not just that we exist, but that we are capable of noticing it.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+
+                <div class="card">
+                    <h2>What If My Doubts Are Right After All?</h2>
+                    <p>Have you ever stopped to wonder: What if some of the people in my life aren't real? What if certain things I do or remember only exist in my mind? It's a fear that can creep in late at night, whispering unsettling possibilities about the fragility of our reality.
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        I know this fear too well; it's fueled by my anxiety—the same anxiety that makes me question everything. It's a familiar loop, the constant doubting of what's real, what's true, and what I can trust. Most of the time, I manage to push it aside, reminding myself it's just my overactive mind at work. But then there are moments when I can't help but wonder: What if my doubt is right?<br>
+                        
+                        John Nash, a mathematician whose brilliance reshaped modern economics, lived with schizophrenia. His mind created people and scenarios so vivid that he didn't realize they weren't real. He trusted them, interacted with them, and built parts of his life around them—only to discover that they existed solely in his mind.<br>
+                        
+                        The truth is, none of us can be absolutely certain about the reality we perceive. Our minds are imperfect, prone to distortions and tricks, especially under stress or anxiety. But maybe that's not the point. Maybe the point isn't to know for certain, but to live as authentically as we can within the reality we experience.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+
+                <div class="card">
+                    <h2>Is Reality Fundamentally Mathematical?</h2>
+                    <p>Okay, hear me out—what if the universe is basically one giant math problem? Equations everywhere. I mean, everything from the orbit of planets to the way coffee swirls in my mug follows mathematical patterns. Does that mean reality is math?
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        The universe isn't just well-organized—it's too well-organized. You don't just get fundamental constants tuned to mind-boggling precision by accident. That's like saying a fully assembled rocket just fell into place because some nuts and bolts happened to be lying around. Come on!<br>
+                        
+                        The deeper you go, the more everything reduces to numbers. Music, motion, even beauty—it can all be described mathematically. The laws of physics read like an instruction manual written in equations.<br>
+                        
+                        But if there's one thing I keep coming back to, it's this: None of this is random. The order, the patterns, the breathtaking coherence of reality—it all points to something greater. Whether we glimpse it in equations, in the constants that shape existence, or in the very act of wondering about it, there's an undeniable sense of intention behind it all.<br>
+                        
+                        Alhamdulillah for the opportunity to reflect and learn.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+
+                <div class="card">
+                    <h2>I Think, Therefore I Spiral</h2>
+                    <p>What is consciousness? Easy. It's that magical property that lets you realize you've just made a terrible life choice while still making it anyway. It's the awareness that you're aware, trapped in a brain that overthinks microwave instructions and spirals into existential dread because your coffee got cold.
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        Science tells us it's all neurons—electrical signals bouncing around in that pinkish blob inside your skull. But here's the thing. You can map brain activity all you want—fMRI scans, EEGs, neuron-level simulations—but not a single scientist has been able to explain how a bunch of electrochemical firings give rise to the experience of being you.<br>
+                        
+                        Consciousness isn't just a scientific headache—it's also a philosophical prank. You think you know what it is because you're in it, but the second you try to explain it, it slips out the back door like a quantum particle caught cheating on classical physics.<br>
+                        
+                        The truth? We don't know what consciousness is. We can't measure it, define it, or replicate it. But we can talk about it for hours, write books on it, make YouTube videos with ominous background music—or, of course, overthink it until our coffee gets cold. Again.<br>
+                        
+                        But hey—at least we think we're thinking. And if that isn't something… it's definitely something else.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+
+                <div class="card">
+                    <h2>The Nature of Nothingness</h2>
+                    <p>Nothingness is one of those concepts that seem clear until you start questioning them. Can true nothingness exist, or is it just the absence of something we can recognize? If there was ever a state of absolute nothingness, how did anything come to be?
+                    </p>
+                    <div class="hidden-content">
+                        <p>
+                        In physics, 'nothingness' is not an absolute void but a dynamic state. Even in what we call 'empty space,' there is structure—quantum fields fluctuating, energy emerging and vanishing in subatomic blinks. This 'emptiness' is far from nothing; it's a seething, active medium governed by the laws of quantum mechanics.<br>
+                        
+                        Perhaps our mistake is in thinking of nothingness as an external reality rather than a conceptual tool. Some philosophers, like the logical positivists, argue that nothingness is merely a linguistic construct—a way of describing the absence of something rather than a thing in itself.<br>
+                        
+                        So, is nothing real? Or is it just another way of talking about the boundaries of what we can comprehend? If nothingness exists, then it is something—and if it does not exist, then it was never there to begin with. Either way, I'll probably still be thinking about it at 3 AM, wondering if I should just accept that existence is weird and go to sleep.
+                    </p>
+                    </div>
+                    <a href="#" class="read-more">Read More</a>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach((card) => {
+                const readMoreBtn = card.querySelector(".read-more");
+                const closeBtn = card.querySelector(".close-btn");
+                const hiddenContent = card.querySelector(".hidden-content");
+
+                if (readMoreBtn && closeBtn && hiddenContent) {
+                    readMoreBtn.addEventListener("click", function (event) {
+                        event.preventDefault();
+
+                        // Close any already open cards first
+                        document.querySelectorAll(".card.expanded").forEach(openCard => {
+                            if (openCard !== card) {
+                                resetCard(openCard);
+                            }
+                        });
+
+                        // Expand current card
+                        card.classList.add("expanded");
+                        card.style.position = "fixed";
+                        card.style.top = "50%";
+                        card.style.left = "50%";
+                        card.style.transform = "translate(-50%, -50%)";
+                        card.style.zIndex = "1000";
+
+                        // Show hidden content
+                        hiddenContent.style.display = "block";
+                        setTimeout(() => (hiddenContent.style.opacity = "1"), 10);
+
+                        // Toggle buttons
+                        readMoreBtn.style.display = "none";
+                        closeBtn.style.display = "block";
+
+                        // Use a single overlay, or create if not exists
+                        let overlay = document.querySelector(".overlay");
+                        if (!overlay) {
+                            overlay = document.createElement("div");
+                            overlay.classList.add("overlay");
+                            document.body.appendChild(overlay);
+                        }
+                        overlay.style.display = "block";
+
+                        // Add blur to body
+                        document.body.classList.add("blurred");
+
+                        // Close button event
+                        closeBtn.onclick = function () {
+                            resetCard(card);
+                        };
+
+                        // Optional: clicking the overlay also closes the card
+                        overlay.onclick = function () {
+                            resetCard(card);
+                        };
+                    });
+                }
+            });
+
+            function resetCard(card) {
+                const readMoreBtn = card.querySelector(".read-more");
+                const closeBtn = card.querySelector(".close-btn");
+                const hiddenContent = card.querySelector(".hidden-content");
+
+                hiddenContent.style.opacity = "0";
+
+                setTimeout(() => {
+                    hiddenContent.style.display = "none";
+                    card.classList.remove("expanded");
+
+                    // Reset styles
+                    card.style.position = "relative";
+                    card.style.transform = "none";
+                    card.style.top = "unset";
+                    card.style.left = "unset";
+                    card.style.zIndex = "";
+
+                    readMoreBtn.style.display = "inline-block";
+                    closeBtn.style.display = "none";
+
+                    // Hide overlay
+                    const overlay = document.querySelector(".overlay");
+                    if (overlay) overlay.style.display = "none";
+
+                    // Remove blur from body
+                    document.body.classList.remove("blurred");
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>

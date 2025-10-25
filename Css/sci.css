@@ -994,7 +994,222 @@ main p {
         height: 40px;
         margin-top: 20px;
         z-index: 4;
+    }/* ============================================
+   RESPONSIVE FIXES - ADD TO BOTTOM OF sci.css
+   ============================================ */
+
+/* Fix overflow issues */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Tablet - 768px */
+@media (max-width: 768px) {
+    .navbar a {
+        font-size: 1.1em;
     }
+
+    main h1, main h2 {
+        font-size: 2em;
+    }
+
+    main p {
+        font-size: 1em;
+    }
+
+    .rotating-image {
+        width: 70%;
+        left: 35%;
+        bottom: -100px;
+    }
+
+    .round-button {
+        top: -350px;
+        font-size: 16px;
+        width: 150px;
+        height: 45px;
+    }
+
+    #about p {
+        font-size: 1.1em;
+    }
+
+    .container p {
+        max-width: 80%;
+    }
+
+    .containerblog {
+        flex-direction: column;
+    }
+
+    .card, .bigcard {
+        width: 85%;
+        height: auto;
+    }
+}
+
+/* Mobile - 480px */
+@media (max-width: 480px) {
+    .navbar a {
+        font-size: 0.9em;
+    }
+
+    main h1 {
+        font-size: 1.8em;
+        top: 12%;
+    }
+
+    main h2 {
+        font-size: 1.8em;
+        top: 21%;
+    }
+
+    main p {
+        font-size: 0.9em;
+        top: 28%;
+    }
+
+    .rotating-image {
+        width: 120%;
+        left: 60%;
+        bottom: -80px;
+    }
+
+    .round-button {
+        top: -400px;
+        font-size: 13px;
+        width: 125px;
+        height: 42px;
+    }
+
+    #about h6 {
+        font-size: 1.3em;
+    }
+
+    #about p {
+        font-size: 1em;
+    }
+
+    .container p {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .card, .bigcard {
+        width: 92%;
+    }
+
+    .card img, .bigcard img {
+        height: 250px;
+    }
+
+    .read-moreb {
+        margin-top: 20px;
+    }
+}
+
+/* Small phones - 390px */
+@media (max-width: 390px) {
+    main h1, main h2 {
+        font-size: 1.7em;
+    }
+
+    main h1 {
+        top: 11%;
+    }
+
+    main h2 {
+        top: 20%;
+    }
+
+    main p {
+        font-size: 0.85em;
+        top: 27%;
+    }
+
+    .rotating-image {
+        width: 130%;
+        left: 65%;
+    }
+
+    .round-button {
+        top: -420px;
+        font-size: 12px;
+        width: 120px;
+        height: 40px;
+    }
+
+    #about h6 {
+        font-size: 1.2em;
+    }
+
+    #about p {
+        font-size: 0.95em;
+    }
+
+    .container p {
+        max-width: 95%;
+    }
+}
+
+/* Very small - 360px */
+@media (max-width: 360px) {
+    .navbar a {
+        font-size: 0.85em;
+    }
+
+    main h1, main h2 {
+        font-size: 1.6em;
+    }
+
+    .round-button {
+        top: -430px;
+        font-size: 11px;
+        width: 115px;
+        height: 38px;
+    }
+
+    .rotating-image {
+        width: 140%;
+        left: 70%;
+    }
+}
+
+/* Landscape mode fix */
+@media (max-height: 600px) and (orientation: landscape) {
+    main h1 {
+        top: 8%;
+        font-size: 1.5em;
+    }
+
+    main h2 {
+        top: 18%;
+        font-size: 1.5em;
+    }
+
+    main p {
+        top: 26%;
+        font-size: 0.8em;
+    }
+
+    .rotating-image {
+        width: 50%;
+        bottom: -60px;
+    }
+
+    .round-button {
+        top: -250px;
+        font-size: 12px;
+        width: 120px;
+        height: 38px;
+    }
+
+    #about {
+        min-height: auto;
+        padding: 30px 20px;
+    }
+}
     main p{
         margin-top:5px ;
     }
@@ -1076,6 +1291,32 @@ main p {
     
 
 }
+.social-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0d0d0d; /* or your footer color */
+}
+
+.social-icons a {
+  color: #fff;
+  margin: 0 12px;
+  font-size: 26px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1da1f2; /* default hover color (Twitter blue) */
+}
+
+.social-icons a:nth-child(2):hover {
+  color: #e60023; /* Pinterest red */
+}
+
+.social-icons a:nth-child(3):hover {
+  color: #553b08; /* Goodreads brown */
+}
+
+
 
 
 
