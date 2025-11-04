@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="../images/last.png">
+    <link rel="icon" href="images/programmer.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Preahvihear&display=swap" rel="stylesheet">
+    <title>Nour the Dev</title>
+    <style>
+:root {
+    --main-bg-color: #05000a;
+    --text-color: #ffffff;
+    --highlight-color: #D6B6F3;
+    --navbar-padding: 10px 20px;
+    --primary: #ededed;
+    --sec: hsl(0, 0%, 8%);
+    --tomato: hsl(4, 100%, 67%);
+    --light-tomato: hsl(4, 100%, 80%);
+    --dark-slate-grey: hsl(0, 0%, 0%);
+    --charcoal-grey: hsl(0, 0%, 0%);
+    --grey: hsl(231, 7%, 60%);
+    --white: hsl(0, 0%, 100%);
+    --gradient-pink: rgb(233, 24, 139);
+    --gradient-orange: rgb(167, 28, 202);
+    --Almost-White: hsl(0, 0%, 98%);
+    --Medium-Gray: hsl(0, 0%, 41%);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: var(--main-bg-color);
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+#home, #Services, #contact {
+    position: relative;
+    transition: transform 1s ease;
+}
+
+/* Binary rain canvas styling */
+#binaryCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.08;
+}
+
+/* Ensure all content stays above the canvas */
+header, main, section {
+    position: relative;
+    z-index: 10;
+}
+
+/* header */
+header {
+    background-color: var(--main-bg-color);
+    padding: var(--navbar-padding);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    gap: 10px;
+}
+
+.navbar a, #Services p, .service-card a {
+    color: var(--text-color);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover, i, .service-card:hover, .circle, #contact #one {
+    color: var(--highlight-color);
+    transform: scale(1.05); 
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: auto; 
+    background-color: var(--main-bg-color);
+    padding: var(--navbar-padding);
+    perspective: 1000px; 
+    position: relative;
+    display: inline-block;
+    transition: box-shadow 0.3s ease; 
+    transform-style: preserve-3d; 
+}
+
+.nav-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.nav-item.flipped {
+    transform: rotateX(360deg); 
+    transition: transform 0.6s ease; 
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+    border-radius: 5px; 
+}
+
+.navbar li:first-child {
+    margin-right: auto;
+}
+
+.nav-icon {
+    width: 40px;
+    height: auto; 
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.nav-icon:hover {
+    transform: scale(1.5);
+}
+
+/* main */
+.fade-in {
+    opacity: 0;
+    transform: scale(1.5);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+main.content {
+    padding-top: 250px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    text-align: left; 
+}
+
+.column {
+    display: flex; 
+    align-items: flex-start; 
+}
+
+.gradient {
+    content: "";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    background: radial-gradient(ellipse at center, rgba(214, 182, 243, 0.4), transparent 70%);
+    z-index: 0; 
+}
+
+.image-container {
+    margin-top: 0px;
+    position: relative; 
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px; 
+    background: radial-gradient(ellipse at center, #d6b6f366, transparent 70%);
+}
+
+.image {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%;
+    display: block;
+    position: absolute; 
+    z-index: 1; 
+}
+
+.image-container::before {
+    content: "";
+    transform: translate(-50%, -50%) scale(1); 
+    width: 110%; 
+    height: 120%; 
+    border-radius: 50%; 
+    background: radial-gradient(ellipse at center, #d6b6f366, transparent 37%);
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    z-index: 0; 
+    pointer-events: none; 
+    transition: all 0.3s ease; 
+}  
+
+.image-container:hover {
+    background: radial-gradient(ellipse at center, #D6B6F3, transparent 70%);
+}
+
+.image-container:hover::before {
+    transform: translate(-50%, -50%) scale(1.5); 
+}
+
+#pn {
+    font-size: 1.4em; 
+    color: #ffffff;
+    font-family: 'Preahvihear', sans-serif;
+    position: absolute;
+    left: 30%;
+    top:20%;
+}
+
+#pn span {
+    color: #D6B6F3;
+}
+
+.arrow {
+    display: none; 
+    position: absolute;
+    left: 25%;
+    padding-bottom: 100px;
+    margin-bottom: 0px;
+    top:24%;
+}
+
+.paragraphs {
+    margin: 0; 
+    margin-top: 40px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 0px;
+    align-items: flex-start;
+}
+
+main.content #p1 { 
+    font-size: 1.2em; 
+    color: #ffffff;
+    font-family: 'Preahvihear', sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+main.content #p2 {
+    font-size: 3em; 
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Preahvihear', sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+main.content #p3 {
+    font-size: 3em; 
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Preahvihear', sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+main.content #p3 span {
+    color: #D6B6F3;
+}
+
+main.content #p4 {
+    font-size: 1em;
+    color: #E6E6FA;
+    font-family: 'Preahvihear', sans-serif;
+    margin-bottom: 0px; 
+    margin-top: 0px;
+}
+
+.paragraphs2 {
+    text-align: left; 
+    margin-top: 50px;
+}
+
+main.content #p5 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 3em;
+    color: #ffffff;
+}
+
+main.content #p6 {
+    margin-top: 5px;
+    margin-bottom: 40px;
+    margin-left: 80px;
+    font-size: 1em;
+    color: #ffffff;
+}
+
+main.content #p7 {
+    margin-top: 0px;
+    font-size: 1.7em;
+    width: auto; 
+    color: #ffffff;
+}
+
+/* services */
+#Services {
+    width: 100%;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    transform: translateX(-100%); 
+    transition: transform 0.7s ease; 
+}
+
+#Services.visible {
+    transform: translateX(0); 
+}
+
+#Services h1,h3 {
+    color: var(--text-color);
+    text-align: center;
+    font-family: 'Preahvihear', sans-serif;
+}
+
+#Services p {
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    position: relative;
+    max-width: max-content;
+    margin: 2rem auto 3rem auto;
+    font-family: 'Preahvihear', sans-serif;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    width: 75%;
+    height: 5px;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+i {
+    font-size: 3rem;
+    color: #D6B6F3;
+    transition: all 0.3s linear;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px  10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service-card {
+    cursor: pointer;
+    width: calc(33% - 40px);
+    margin: 20px;
+    padding: 2rem 20px 20px 20px;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    background-color:  #d6b6f31e;
+}
+
+.service-card:hover {
+    box-shadow: 0 0 30px 0 #D6B6F3;
+    transform: scale(1.1);
+}
+
+.service-card a {
+    color: #D6B6F3;
+    text-decoration: none;
+}
+
+.icon-container {
+    align-items: center;
+    transition: 0.3s linear;
+    width: max-content;
+    margin: 0 auto;
+}
+
+.icon-container img{
+    margin: auto;
+}
+
+.sec-2 #sign-up-form {
+    background-color: #d6b6f31e;
+    margin: 40px 0; 
+    padding: 2rem; 
+    border-radius: 20px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.h1-info h1, .h1-info p {
+    color: white;
+    text-align: center;
+}
+
+.sec-2 form {
+    width: 100%; 
+    max-width: 500px; 
+}
+
+.form-group {
+    margin-bottom: 1rem; 
+}
+
+.form-control {
+    width: 100%; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px;
+    background-color: #E6E6FA; 
+}
+
+.social-links {
+    display: flex;                
+    justify-content: center;         
+    align-items: center;           
+    list-style-type: none;          
+    margin: 0;    
+}
+
+.social-links a {
+    margin: 0 5px;                
+}
+
+.sec-2 form {
+    margin: 1rem 0;
+}
+
+.sec-2 form .label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sec-2 form label.email-address {
+    display: inline-block;
+    color: var(--Almost-Black);
+    margin-bottom: 0.8rem;
+}
+
+.sec-2 .sign-up-form button {
+    margin: 1rem 0;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border-radius: 10px;
+    color:#05000a;
+    background-color: #D6B6F3;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.sec-2 .sign-up-form button:hover{
+    border: 2px solid #D6B6F3;
+    background-color: transparent;
+    color: #D6B6F3;
+}
+
+.sec-2 section.hidden {
+    display: none;
+}
+
+form .error-validation {
+    display: inline;
+    color: var(--tomato);
+    font-size: 1rem;
+}
+
+.error-msg {
+    border-color: var(--tomato);
+    background-color: var(--light-tomato);
+    color: red;
+}
+
+input .error-msg::placeholder {
+    color: red;
+}
+
+.circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.circle {
+    background-color: #251C31;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.circle img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.h1-info h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin: auto;
+}
+
+.p-msg {
+    color: var(--grey);
+    font-family: "robot-regular";
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 5px;
+    }
+
+    .navbar ul {
+        margin-right: 50px; 
+    }
+
+    .navbar li {
+        margin-right: 10px; 
+    }
+
+    .navbar a {
+        padding: 4px 8px;
+        font-size: 14px; 
+    }
+
+    .nav-icon {
+        width: 30px; 
+        margin-left: 100px; 
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 3px; 
+    }
+
+    .navbar ul {
+        margin-right: 20px; 
+    }
+
+    .navbar li {
+        margin-right: 5px; 
+    }
+
+    .navbar a {
+        padding: 3px 6px; 
+        font-size: 12px; 
+    }
+
+    .nav-icon {
+        width: 25px; 
+        margin-left: 50px; 
+    }
+
+    .nav-icon:hover {
+        transform: scale(1.2); 
+    }
+
+    .column{
+        padding-top: 100px;
+    }
+    .image-container {
+        margin-top: 20px;
+        padding-top: 10px;
+        position: relative; 
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-right: 20px; 
+        background: radial-gradient(ellipse at center, rgba(214, 182, 243, 0.4), transparent 70%);
+    }
+    .fade{
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    main.content {
+        margin-top: 50px; 
+    }
+
+    .paragraphs{
+        margin-top: 50px;
+    }
+
+    .paragraphs2{
+        margin-top: 10px;
+    }
+
+    main.content #p6{
+        margin-right: auto;
+    }
+
+    main.content #p2,
+    main.content #p3,
+    main.content #p5 {
+        font-size: 1.3em; 
+    }
+
+    main.content #p4,
+    main.content #p1,
+    main.content #p6 {
+        font-size: 0.7em; 
+    }
+}
+
+@media (max-width: 480px) {
+    main.content {
+        padding: 20px; 
+        margin-top: 70px;
+    }
+
+    main.content #p6 {
+        margin-left: 10px; 
+    }
+
+    main.content #p2,
+    main.content #p3,
+    main.content #p5 {
+        font-size: 1.5em; 
+    }
+
+    main.content #p4,
+    main.content #p1,
+    main.content #p6 {
+        font-size: 0.7em; 
+    }
+    main.content #p7{
+        font-size: 1em;
+    }
+    
+    .paragraphs2 {
+        text-align: left; 
+        margin-top: 50px;
+    }
+
+    #Services{
+        height: 100%;
+        width: 70%;
+        transition: transform 1s ease;
+        transform: none !important;
+    }
+    .circle {
+        transform: scale(0.8);
+    }
+
+    .circle img {
+        width: 70%;
+        height: auto;
+    }
+    #contact {
+        height: 80vh;
+        width: 80%;
+        transition: transform 1s ease;
+        padding-top: 60px;
+        transform: none !important;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+@media (max-width: 390px) {
+    #Services{
+        height: 100%;
+        width: 70%;
+        transition: transform 1s ease;
+        transform: none !important;
+    }
+    .circle-container{
+        width: 50%;
+        margin: 3px;
+    }
+    .circle {
+        transform: scale(0.7);
+        margin: 0px;
+    }
+    
+    .circle img {
+        width: 60%;
+        height: auto;
+    }
+    #contact {
+        height: 80vh;
+        width: 80%;
+        transition: transform 1s ease;
+        padding-top: 60px;
+        transform: none !important;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .service-card {
+        width: calc(50% - 40px);
+    }
+    .none{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .service-card {
+        width: calc(100% - 40px); 
+        margin: 10px auto; 
+    }
+    .sec-2 {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 980px) {
+    .sec-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .sec-2 section.sign-up-form {
+        flex-direction: row;
+        max-width: 900px;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        min-height: 50vh;
+        background-color: var(--white);
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .sec-2 section.product-info {
+        flex: 1;
+    }
+
+    .sec-2 section.product-img {
+        max-width: 200vh;
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        font-size: 15px;
+    }
+}
+    </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-29GR4SLSNR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-29GR4SLSNR');
+</script>
+<body>
+    <!-- Binary Rain Canvas -->
+    <canvas id="binaryCanvas"></canvas>
+
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/"><img src="images/scientist.png" alt="Icon" class="nav-icon"></a></li>
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#Services">Services</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content fade-in" id="home">
+        <div class="column">
+            <div class="none">
+            <p id="pn" class="hover-text" style="display: none;"> Hi, I am <span>Nour</span></p>
+            <img src="images/Arrow.png" alt="Sample Image" class="arrow" style="display: none;">
+            </div>
+            <div class="image-container">
+                <img src="images/a-white-girl-with-hijab-and-round-glasses.png" alt="Sample Image" class="image">
+            </div>
+            <div class="paragraphs">
+                <p id="p1">A developer who</p>
+                <p id="p2">crafts code</p>
+                <p id="p3">that's out of this <span>world</span></p>
+                <p id="p4">because great software is as boundless as the universe.</p>
+            </div>
+        </div>
+        <div class="paragraphs2">
+            <p id="p5">I'm a Web Developer.</p>
+            <p id="p6">Front-end developer & UI/UX designer</p>
+            <p id="p7">A self-taught freelancer, functioning in the industry for 2+ years now.<br>
+                I make meaningful and delightful digital products that create an equilibrium<br>
+                between user needs and business goals.</p>
+        </div>
+    </main>
+
+<section class="fade" id="Services">
+            <h1>Services</h1>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="icon-container">
+                <i class="fa-solid fa-user"><img src="images/ui.png" alt="Icon" class="nav-icon"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>
+                creating expert UI/UX design services to create intuitive and visually appealing interfaces. By focusing on user-centered design principles,<br> I ensure that every project enhances usability and delivers a seamless experience, helping clients engage their audience effectively.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="icon-container">
+                <i class="fa-solid fa-cart-shopping"><img src="images/web-programming.png" alt="Icon" class="nav-icon"></i>
+            </div>
+            <h3>Building a Website</h3>
+            <p>
+                creating custom websites tailored to meet the unique needs of my clients. From concept to launch, I ensure an engaging user experience, responsive design, and seamless functionality to help businesses establish a strong online presence.</p>
+        </div>
+    </div>
+    <h1>Tools I use</h1>
+    <div class="circle-container">
+       
+        <div class="circle-row">
+          <div class="circle"><img src="images/html-5.png" alt="Icon"></div>
+          <div class="circle"><img src="images/css-3.png" alt="Icon"></div>
+          <div class="circle"><img src="images/js.png" alt="Icon"></div>
+          <div class="circle"><img src="images/python.png" alt="Icon"></div>
+          <div class="circle"><img src="images/c-.png" alt="Icon"></div>
+        </div>
+        
+        <div class="circle-row">
+          <div class="circle"><img src="images/science.png" alt="Icon"></div>
+          <div class="circle"><img src="images/typescript.png" alt="Icon"></div>
+          <div class="circle"><img src="images/sass.png" alt="Icon"></div>
+          <div class="circle"><img src="images/figma.png" alt="Icon"></div>
+        </div>
+      </div>
+</section>
+
+<section class="sec-2" id="contact">
+    <section class="sign-up-form animate" id="sign-up-form">
+        <section class="h1-info">
+          <h1>Contact Me</h1>
+          <p class="main-description">
+            For technical inquiries or project collaborations, feel free to get in touch.
+          </p>
+        </section>
+        <section class="product-img">
+            <form id="contact-form" method="post">
+                <div class="form-group">
+                    <input type="text" name="Name" placeholder="Your Name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="Email" placeholder="Your Email" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <textarea name="Message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+    </section>
+</section>
+
+<script>
+// Binary Rain Effect
+const canvas = document.getElementById('binaryCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const binary = '01';
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for (let i = 0; i < columns; i++) {
+    drops[i] = Math.random() * -100;
+}
+
+function drawBinary() {
+    ctx.fillStyle = 'rgba(5, 0, 10, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#D6B6F3';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = binary.charAt(Math.floor(Math.random() * binary.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+setInterval(drawBinary, 50);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Your original JavaScript code
+window.addEventListener('scroll', function() {
+  const main = document.getElementById('home');
+  const services = document.getElementById('Services');
+  const contact = document.getElementById('contact');
+  const scrollPosition = window.scrollY;
+
+  const windowHeight = window.innerHeight;
+  const fullScroll = 2 * windowHeight; 
+  
+  if (scrollPosition < windowHeight) {
+    main.style.transform = `translateX(${-scrollPosition}px)`;
+    services.style.transform = 'translateX(0)';
+    contact.style.transform = 'translateX(0)';
+  } else if (scrollPosition >= windowHeight && scrollPosition < fullScroll) {
+    main.style.transform = `translateX(${-windowHeight}px)`;
+    services.style.transform = `translateX(${scrollPosition - windowHeight}px)`;
+    contact.style.transform = 'translateX(0)';
+  } else {
+    main.style.transform = `translateX(${-windowHeight}px)`;
+    services.style.transform = `translateX(${windowHeight}px)`;
+    contact.style.transform = `translateX(${scrollPosition - fullScroll}px)`;
+  }
+});
+
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        item.classList.add('flipped');
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.classList.remove('flipped');
+    });
+});
+
+const imageContainer = document.querySelector('.image-container');
+const hoverText = document.querySelector('.hover-text');
+const arrowImage = document.querySelector('.arrow');
+
+imageContainer.addEventListener('mouseenter', () => {
+    hoverText.style.display = 'block';
+    arrowImage.style.display = 'block'; 
+});
+
+imageContainer.addEventListener('mouseleave', () => {
+    hoverText.style.display = 'none';
+    arrowImage.style.display = 'none'; 
+});
+
+const gradient = document.createElement('div');
+gradient.classList.add('gradient');
+imageContainer.appendChild(gradient);
+
+function animateGradient() {
+    let scale = 1;
+    let opacity = 0.5;
+    let direction = 1;
+
+    setInterval(() => {
+        scale += 0.01 * direction;
+        opacity += 0.05 * direction;
+
+        if (scale >= 1.1 || scale <= 1) {
+            direction *= -1; 
+        }
+
+        gradient.style.transform = `scale(${scale})`;
+        gradient.style.opacity = opacity;
+    }, 100); 
+}
+
+animateGradient();
+
+document.addEventListener("DOMContentLoaded", function() {
+    const content = document.getElementById('home');
+    
+    setTimeout(() => {
+        content.classList.add('visible');
+    }, 300); 
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const services = document.getElementById('Services');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                services.classList.add('visible');
+            } else {
+                services.classList.remove('visible');
+            }
+        });
+    });
+
+    observer.observe(services);
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const services = document.getElementById('Services');
+
+    function checkVisibility() {
+        const rect = services.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            services.classList.add('visible');
+        } else {
+            services.classList.remove('visible');
+        }
+    }
+
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility);
+});
+</script>
+</body>
+</html>
