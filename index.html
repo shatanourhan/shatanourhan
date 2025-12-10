@@ -209,7 +209,7 @@
             max-width: 800px;
             position: relative;
             z-index: 2;
-            margin-top: -100px;
+            margin-top: -130px;
         }
 
         /* Solar System */
@@ -328,7 +328,7 @@
             color: var(--text-dim);
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
         }
 
         .hero h1 {
@@ -337,7 +337,7 @@
             line-height: 1.2;
 
             letter-spacing: -0.02em;
-            min-height: 1.5em;
+            min-height: 1em;
         }
 
         .hero h1 .typing {
@@ -357,7 +357,7 @@
         .hero-description {
             font-size: 1.1rem;
             color: var(--text-dim);
-            margin: 0.5rem  0;
+            margin:  0 0 1rem 0;
             max-width: 600px;
         }
 
@@ -585,6 +585,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-content {
+        
+            margin-top: -100px;
+        }
             nav {
                 padding: 1.5rem 5%;
             }
@@ -713,13 +717,13 @@
         </div>
 
         <div class="hero-content">
-            <p class="hero-label fade-in"></p>
+            <p class="hero-label fade-in">Bridging</p>
             <h1 class="fade-in delay-1">
                 
                 <span class="typing" id="typingText"></span>
             </h1>
             <p class="hero-description fade-in delay-2">
-                In the making
+                one question at a time
             </p>
             <a onclick="window.location.href='mailto:shatanourhan@outlook.com?subject=Lebenslauf Anfrage&body=Können Sie mir bitte Ihren Lebenslauf schicken?'" class="hero-cta fade-in delay-3">my resume</a>
         </div>
@@ -841,7 +845,7 @@
         }, 3000);
 
         // Typewriter Effect
-        const texts = ['Rocket Scientist', 'Astrophysicist'];
+        const texts = ['Rocket Science', 'Astrophysics'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
