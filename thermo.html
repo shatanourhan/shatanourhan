@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering ↔ Physics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Georgia', serif;
+            background: #000000;
+            color: #e0e0e0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Sophisticated animated background */
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.3em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5em, 6vw, 5em);
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(90deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2em, 3vw, 1.8em);
+            color: #999;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .keywords-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .keyword {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .keyword:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '⌄';
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section */
+        section {
+            margin: 120px 0;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(2em, 4vw, 3em);
+            font-weight: 300;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 1.2em;
+            color: #aaa;
+            line-height: 1.9;
+            max-width: 900px;
+        }
+
+        /* Content Cards - Modern Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .content-card {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #bbb;
+            line-height: 1.7;
+        }
+
+        .card-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Comparison Table - Enhanced */
+        .comparison-section {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.6), rgba(10, 10, 10, 0.8));
+            border-radius: 24px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 80px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .comparison-table thead th {
+            padding: 20px 30px;
+            background: rgba(30, 30, 30, 0.9);
+            font-size: 1.2em;
+            font-weight: 500;
+            text-align: left;
+            border: none;
+        }
+
+        .comparison-table thead th:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+
+        .comparison-table thead th:last-child {
+            border-radius: 0 12px 12px 0;
+        }
+
+        .comparison-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .comparison-table tbody td {
+            padding: 25px 30px;
+            background: rgba(20, 20, 20, 0.6);
+            border: none;
+            color: #ccc;
+            font-size: 1.05em;
+        }
+
+        .comparison-table tbody td:first-child {
+            border-radius: 12px 0 0 12px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .comparison-table tbody td:last-child {
+            border-radius: 0 12px 12px 0;
+        }
+
+        .comparison-table tbody tr:hover td {
+            background: rgba(40, 40, 40, 0.8);
+            transform: scale(1.02);
+        }
+
+        /* Quote/Insight Box - Redesigned */
+        .insight-box {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
+            border-left: 4px solid rgba(255, 255, 255, 0.4);
+            border-radius: 0 16px 16px 0;
+            padding: 40px 50px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 150px;
+            color: rgba(255, 255, 255, 0.03);
+            font-family: Georgia, serif;
+        }
+
+        .insight-label {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .insight-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #ddd;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Connection Visual */
+        .connection-visual {
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+        }
+
+        .connection-line {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .connection-dot {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        .connection-dot:nth-child(1) { top: 0; animation-delay: 0s; }
+        .connection-dot:nth-child(2) { top: 50%; animation-delay: 0.5s; }
+        .connection-dot:nth-child(3) { bottom: 0; animation-delay: 1s; }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+            50% { transform: translateX(-50%) scale(1.5); opacity: 1; }
+        }
+
+        /* Living Notes - Special Section */
+        .living-notes {
+            background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(15, 15, 15, 0.95));
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .living-notes::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .living-notes-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .living-indicator {
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: livePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+        }
+
+        .living-notes h2 {
+            font-size: 2em;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .questions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .questions-list li {
+            padding: 20px 0;
+            padding-left: 40px;
+            position: relative;
+            color: #d0d0d0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .questions-list li:last-child {
+            border-bottom: none;
+        }
+
+        .questions-list li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 100px 40px 60px;
+            color: #666;
+            font-size: 1em;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-note {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-section {
+                padding: 40px 25px;
+                overflow-x: auto;
+            }
+
+            .comparison-table {
+                min-width: 600px;
+            }
+
+            .insight-box {
+                padding: 30px 25px;
+            }
+
+            .living-notes {
+                padding: 40px 25px;
+            }
+
+            .container {
+                padding: 0 25px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .keywords-container {
+                gap: 10px;
+            }
+
+            .keyword {
+                font-size: 0.8em;
+                padding: 8px 15px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .content-card {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="background-layer">
+        <div class="grid-layer"></div>
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"></div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#lisa">LISA System</a></li>
+                <li><a href="#bridge">Conceptual Bridge</a></li>
+                <li><a href="#questions">Open Questions</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-badge">Thermodynamics Across Scales</div>
+        <h1>
+            Engineering <span class="highlight">↔</span> Physics Bridge
+        </h1>
+        <p class="hero-subtitle">
+            Exploring the thermodynamic foundations connecting precision space interferometry with black hole physics
+        </p>
+        <div class="keywords-container">
+            <span class="keyword">Noise</span>
+            <span class="keyword">Dissipation</span>
+            <span class="keyword">Stability</span>
+            <span class="keyword">Entropy</span>
+            <span class="keyword">Information Flow</span>
+        </div>
+        <div class="scroll-indicator"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview -->
+        <section id="overview" class="content-section">
+            <div class="section-header">
+                <div class="section-number">00 / INTRODUCTION</div>
+                <h2 class="section-title">Research Framework</h2>
+                <p class="section-description">
+                    This work examines how thermal control in precision space interferometry (LISA-class missions) and black hole thermodynamics emerge as two manifestations of the same fundamental physical principles.
+                </p>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">Core Premise</div>
+                <p class="insight-text">
+                    This document serves as a conceptual scaffold for understanding thermodynamic limits across vastly different scales—from spacecraft engineering to spacetime physics.
+                </p>
+            </div>
+        </section>
+
+        <!-- LISA Section -->
+        <section id="lisa" class="content-section">
+            <div class="section-header">
+                <div class="section-number">01 / LISA SYSTEM</div>
+                <h2 class="section-title">LISA as a Thermodynamic System</h2>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">🔬</div>
+                    <h3 class="card-title">Measurement Paradigm</h3>
+                    <p style="color: #aaa; line-height: 1.8;">
+                        LISA detects changes in spacetime geometry through laser phase measurements—extraordinarily sensitive to thermal fluctuations at the fundamental level.
+                    </p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">🌡️</div>
+                    <h3 class="card-title">Thermal Control</h3>
+                    <ul class="card-list">
+                        <li>Radiative heat exchange</li>
+                        <li>Internal dissipation sources</li>
+                        <li>Structural strain from gradients</li>
+                        <li>Optical path noise coupling</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">⚖️</div>
+                    <h3 class="card-title">Thermodynamic View</h3>
+                    <ul class="card-list">
+                        <li>Heat fluxes as irreversibility</li>
+                        <li>Temperature gradients as entropy production</li>
+                        <li>Drag-free motion approaching equilibrium</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="connection-visual">
+            <div class="connection-line">
+                <div class="connection-dot"></div>
+                <div class="connection-dot"></div>
+                <div class="connection-dot"></div>
+            </div>
+        </div>
+
+        <!-- Noise Budget -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">02 / REINTERPRETATION</div>
+                <h2 class="section-title">Noise Budget as Entropy Budget</h2>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3 class="card-title">Engineering Perspective</h3>
+                    <ul class="card-list">
+                        <li>Thermal noise</li>
+                        <li>Brownian motion</li>
+                        <li>Radiation pressure fluctuations</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-title">Thermodynamic Perspective</h3>
+                    <ul class="card-list">
+                        <li>Microscopic degrees of freedom</li>
+                        <li>Information loss channels</li>
+                        <li>Entropy production mechanisms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <div class="insight-label">Key Insight</div>
+                <p class="insight-text">
+                    The cleaner the thermal environment, the closer the system approaches a reversible measurement—a fundamental thermodynamic limit.
+                </p>
+            </div>
+        </section>
+
+        <div class="connection-visual">
+            <div class="connection-line">
+                <div class="connection-dot"></div>
+                <div class="connection-dot"></div>
+                <div class="connection-dot"></div>
+            </div>
+        </div>
+
+        <!-- Black Holes -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">03 / SCALE TRANSITION</div>
+                <h2 class="section-title">Black Hole Thermodynamics</h2>
+                <p class="section-description">
+                    Black holes exhibit all characteristics of thermodynamic objects: temperature, entropy, dissipation, and relaxation dynamics.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">⚫</div>
+                    <h3 class="card-title">Near-Extremal Properties</h3>
+                    <ul class="card-list">
+                        <li>Approaching zero temperature</li>
+                        <li>Quantum correction dominated</li>
+                        <li>Extended relaxation timescales</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">🔭</div>
+                    <h3 class="card-title">Measurement Analogy</h3>
+                    <ul class="card-list">
+                        <li>Ultra-stable thermal platforms</li>
+                        <li>Long integration measurements</li>
+                        <li>Fundamental noise limitations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conceptual Bridge -->
+        <section id="bridge" class="comparison-section content-section">
+            <div class="section-header" style="margin-bottom: 50px;">
+                <div class="section-number">04 / UNIFICATION</div>
+                <h2 class="section-title">The Conceptual Bridge</h2>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>LISA Instrument</th>
+                        <th>Black Hole System</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Thermal noise</td>
+                        <td>Quantum fluctuations</td>
+                    </tr>
+                    <tr>
+                        <td>Noise budget</td>
+                        <td>Entropy balance</td>
+                    </tr>
+                    <tr>
+                        <td>Drag-free control</td>
+                        <td>Near-geodesic motion</td>
+                    </tr>
+                    <tr>
+                        <td>Laser phase decoherence</td>
+                        <td>Information leakage</td>
+                    </tr>
+                    <tr>
+                        <td>Long baseline</td>
+                        <td>Long relaxation time</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insight-box" style="margin-top: 50px;">
+                <div class="insight-label">Central Question</div>
+                <p class="insight-text">
+                    What are the fundamental thermodynamic limits of measuring spacetime dynamics?
+                </p>
+            </div>
+        </section>
+
+        <!-- Unified Path -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">05 / TRAJECTORY</div>
+                <h2 class="section-title">One Continuous Path</h2>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3 class="card-title">Engineering Develops</h3>
+                    <ul class="card-list">
+                        <li>Control of irreversibility</li>
+                        <li>Systematic noise suppression</li>
+                        <li>Stability under extreme constraints</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-title">Physics Explores</h3>
+                    <ul class="card-list">
+                        <li>Spacetime as thermodynamic medium</li>
+                        <li>Gravity emerging from information</li>
+                        <li>Thermal equilibrium near horizons</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 1.3em; color: #bbb; margin-top: 50px; font-style: italic;">
+                Same intuitions. Same mathematical language. Different boundary conditions.
+            </p>
+
+            <div class="insight-box" style="margin-top: 60px;">
+                <div class="insight-label">Research Direction</div>
+                <p class="insight-text">
+                    LISA represents the bridge technology that makes this conceptual trajectory coherent and experimentally accessible—tracing thermodynamics from spacecraft hardware to spacetime itself.
+                </p>
+            </div>
+        </section>
+
+        <!-- Open Questions -->
+        <section id="questions" class="living-notes content-section">
+            <div class="living-notes-header">
+                <div class="living-indicator"></div>
+                <h2>Open Questions</h2>
+            </div>
+            <ul class="questions-list">
+                <li>At what point does thermal noise transition from technical to fundamental?</li>
+                <li>Can entropy production be directly measured rather than inferred?</li>
+                <li>Could Hawking radiation be understood as a measurement back-reaction?</li>
+            </ul>
+            <p style="margin-top: 40px; font-style: italic; color: #888; text-align: center;">
+                This section evolves with ongoing research and understanding
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-note">Living document — continuously refined through research and contemplation</p>
+        <p style="color: #444; margin-top: 10px;">© 2025</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const sections = document.querySelectorAll('.content-section');
+        
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
