@@ -865,7 +865,7 @@
             }
 
             if (!isDeleting && charIndex === currentText.length) {
-                setTimeout(() => isDeleting = true, 2000);
+                setTimeout(() => isDeleting = true, 800);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 textIndex = (textIndex + 1) % texts.length;
@@ -874,7 +874,7 @@
             setTimeout(type, isDeleting ? 50 : 100);
         }
 
-        setTimeout(type, 1000);
+        setTimeout(type, 300);
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
