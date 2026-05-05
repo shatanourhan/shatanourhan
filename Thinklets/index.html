@@ -14,10 +14,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thinklets</title>
     <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-dim: #999999;
+            --accent: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Navigation - copied from root index.html */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: absolute;
+            left: 5%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a[href="../index.html"] {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-links a[href="../index.html"]::before {
+            content: '';
+            width: 1.2rem;
+            height: 1.2rem;
+            background: 
+                conic-gradient(from 0deg, #ffffff, #a78bfa, #ffffff, #ffffff);
+            border-radius: 50% 20% 50% 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            position: relative;
+            animation: homeFloat 3s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+
+        .nav-links a[href="../index.html"]::before {
+            position: relative;
+        }
+        
+        .nav-links a[href="../index.html"]::before::before {
+            content: '';
+            position: absolute;
+            width: 0.6rem;
+            height: 0.6rem;
+            top: 0.15rem;
+            left: 0.15rem;
+            background: #333;
+            clip-path: polygon(50% 0%, 0% 30%, 0% 100%, 100% 100%, 100% 30%);
+            z-index: 1;
+        }
+        
+        .nav-links a[href="../index.html"]::before::after {
+            content: '🏠';
+            position: absolute;
+            font-size: 0.7rem;
+            filter: drop-shadow(0 0 1px #000);
+            z-index: 2;
+        }
+
+        @keyframes homeFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-2px) rotate(180deg); }
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a[href="../index.html"]:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #a78bfa;
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .nav-links a[href="../index.html"]:hover::before {
+            box-shadow: 0 0 20px #a78bfa, 0 0 30px #a78bfa;
+            animation: homeGlow 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes homeGlow {
+            from { box-shadow: 0 0 10px #a78bfa, 0 0 20px #a78bfa; }
+            to { box-shadow: 0 0 20px #a78bfa, 0 0 40px #a78bfa, 0 0 60px rgba(167,139,250,0.3); }
+        }
+
+        .nav-links a[href="../index.html"]:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a[href="../index.html"]::before {
+                width: 1rem;
+                height: 1rem;
+            }
         }
 
         html, body {
@@ -30,8 +170,8 @@
             flex-direction: column;
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
-            background: #000000;
-            color: #ffffff;
+            background: var(--bg);
+            color: var(--text);
             position: relative;
         }
 
@@ -98,10 +238,10 @@
 
         main {
             flex: 1;
-            color: #ffffff;
+            color: var(--text);
             padding: 20px;
             margin: 10px;
-            margin-top: 30px;
+            margin-top: 60px;
             margin-bottom: 30vh;
             border-radius: 5px;
             display: flex;
@@ -581,12 +721,16 @@
                 font-size: 0.75em;
                 letter-spacing: 2px;
             }
+
+            main {
+                margin-top: 15px;
+            }
         }
 
         @media (max-width: 480px) {
             main {
                 padding: 10px;
-                margin-top: 20px;
+                margin-top: 40px;
             }
 
             .intro-section {
@@ -666,6 +810,13 @@
     </style>
 </head>
 <body>
+    <!-- Navigation with Home button -->
+    <nav>
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">← Home</a></li>
+        </ul>
+    </nav>
     <main id="home">
         <div class="intro-section">
             <p>
